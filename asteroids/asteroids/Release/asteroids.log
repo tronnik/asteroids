@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\Aula 1\source\repos\asteroids\asteroids\src\main.cpp(39,32): error C2220: la siguiente advertencia se trata como un error
+C:\Users\Aula 1\source\repos\asteroids\asteroids\src\main.cpp(39,32): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\source\repos\asteroids\asteroids\src\main.cpp(39,20): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
