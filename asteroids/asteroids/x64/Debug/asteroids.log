@@ -1,0 +1,12 @@
+﻿  main.cpp
+  player.cpp
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\objects\player.cpp(6,25): error C2220: la siguiente advertencia se trata como un error
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\objects\player.cpp(6,25): warning C4459: la declaración de 'player' oculta la declaración global
+      C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\objects\player.cpp(4,8):
+      vea la declaración de 'player'
+  
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\objects\player.cpp(14,25): warning C4459: la declaración de 'player' oculta la declaración global
+      C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\objects\player.cpp(4,8):
+      vea la declaración de 'player'
+  
+  Generando código...
