@@ -13,18 +13,23 @@ int main()
     // Inicialización
     InitWindow(screenWidth, screenHeight, "Asteroids");
     initPlayer(player);  
+    initPos();
 
     // Loop
     while (!WindowShouldClose())
     {
         updateMousePos(mousePlayer);
         // Chequeo de Input
+        
+        movePlayer(player, mousePlayer);
 
         // Actualización
 
         // Dibujado
         BeginDrawing();
         ClearBackground(WHITE); // system("cls");
+
+        
         drawPlayer(player, mousePlayer);
 
         EndDrawing();

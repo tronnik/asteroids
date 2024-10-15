@@ -8,16 +8,33 @@ Player mousePlayer;
 
 void initPlayer(Player& p)  
 {
-    p.posX = static_cast<float>(screenWidth) / 2.0f;
-    p.posY = static_cast<float>(screenHeight) / 2.0f;
-    p.width = 30;
-    p.height = 30;
+    p.posX = 5.0f;
+    p.posY = 5.0f;
+    p.width = 30.0f;
+    p.height = 30.0f;
+    p.actualSpeed = 25.0f;
+    p.maxSpeed = 30.0f;
+}
+
+void initPos()
+{
+    player.posX = static_cast<float>(screenWidth) / 2.0f;
+    player.posY = static_cast<float>(screenHeight) / 2.0f;
 }
 
 void updateMousePos(Player& m)
 {
     m.posX = static_cast<float>(GetMouseX());
     m.posY = static_cast<float>(GetMouseY());
+}
+
+void movePlayer(Player& p, Player& m)
+{
+    if (IsKeyDown(KEY_UP))
+    {
+        p.posY = m.posY;
+        p.posX = m.posX;
+    }
 }
 
 void drawPlayer(Player& p, Player& m)
@@ -32,6 +49,8 @@ void drawPlayer(Player& p, Player& m)
         RED  
     );
 }
+
+
 
 
 
