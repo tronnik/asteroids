@@ -19,12 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\objects\player.cpp" />
+    <ClCompile Include="src\scenes\gameplayScenes.cpp" />
+    <ClCompile Include="src\scenes\menuScenes.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game.h" />
     <ClInclude Include="src\objects\player.h" />
     <ClInclude Include="src\objects\utils.h" />
+    <ClInclude Include="src\scenes\gameplayScenes.h" />
+    <ClInclude Include="src\scenes\menuScenes.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
