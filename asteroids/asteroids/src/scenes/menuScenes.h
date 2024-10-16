@@ -1,5 +1,5 @@
 #pragma once
-class menuScenes
-{
-};
+
+void drawMenu();
+void drawGameOver();
 

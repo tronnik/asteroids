@@ -2,6 +2,7 @@
 #include "utils.h"
 #include "raylib.h"
 #include "player.h"
+#include "gameplayScenes.h"
 
 using namespace std;
 
@@ -12,16 +13,15 @@ int main()
 {
     // Inicialización
     InitWindow(screenWidth, screenHeight, "Asteroids");
-    initPlayer(player);  
-    initPos();
+    initGameplay();
 
     // Loop
     while (!WindowShouldClose())
     {
-        updateMousePos(mousePlayer);
+        
         // Chequeo de Input
         
-        movePlayer(player, mousePlayer);
+        updateGameplay();
 
         // Actualización
 
@@ -30,7 +30,7 @@ int main()
         ClearBackground(WHITE); // system("cls");
 
         
-        drawPlayer(player, mousePlayer);
+        drawGameplay();
 
         EndDrawing();
     }
