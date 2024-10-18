@@ -8,7 +8,7 @@ Player player;
 
 void initPlayer(Player& p) 
 {
-    p.position = { static_cast<float>(screenWidth) / 2.0f,static_cast<float>(screenHeight) / 2.0f };
+    p.position = { static_cast<float>(screenWidth) / 2.0f, static_cast<float>(screenHeight) / 2.0f };
     p.speed = { 0.0f, 0.0f };
     p.acceleration = { 0.0f, 0.0f };
     p.maxSpeed = 600.0f;  
@@ -41,30 +41,7 @@ void updatePlayer(Player& p)
             p.acceleration.y = 0.5f;
         }
     }
-    //else 
-    //{
-    //    p.acceleration.x = 0.0f;
-    //    p.acceleration.y = 0.0f;
-    //}
-
-    //if (IsMouseButtonUp(MOUSE_LEFT_BUTTON)) 
-    //{
-    //    if (p.speed.x > 0) {
-    //        p.speed.x -= DECELERATION_RATE * GetFrameTime();
-    //    }
-    //    else if (p.speed.x < 0) 
-    //    {
-    //        p.speed.x += DECELERATION_RATE * GetFrameTime();
-    //    }
-    //
-    //    if (p.speed.y > 0) {
-    //        p.speed.y -= DECELERATION_RATE * GetFrameTime();
-    //    }
-    //    else if (p.speed.y < 0) 
-    //    {
-    //        p.speed.y += DECELERATION_RATE * GetFrameTime();
-    //    }
-    //}
+    
 
     p.speed.x += p.acceleration.x * GetFrameTime();
     p.speed.y += p.acceleration.y * GetFrameTime();

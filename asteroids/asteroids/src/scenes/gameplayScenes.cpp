@@ -13,5 +13,7 @@ void updateGameplay()
 
 void drawGameplay()
 {
+	Texture2D background = LoadTexture("res/background.png");
+	DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 	drawPlayer(player);
 }
