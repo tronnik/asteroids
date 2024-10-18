@@ -2,27 +2,31 @@
 #include "player.h"
 #include "utils.h"
 #include "gameplayScenes.h"
+#include "menuScenes.h"
 
 
 int screenWidth = 1024;
 int screenHeight = 768;
+int screenWidthMin = 0;
+int screenHeightMin = 0;
 
 int main() 
 {
     InitWindow(screenWidth, screenHeight, "asteroids");
 
-    initGameplay();
+  // initGameplay();
 
     SetTargetFPS(60); 
 
     while (!WindowShouldClose()) 
     {  
-        updateGameplay();
+       // updateGameplay();
 
         BeginDrawing();
         ClearBackground(RAYWHITE);  
 
-        drawGameplay();
+        drawMenu();
+      //  drawGameplay();
 
         EndDrawing();
     }

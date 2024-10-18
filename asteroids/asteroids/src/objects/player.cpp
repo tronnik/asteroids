@@ -37,34 +37,34 @@ void updatePlayer(Player& p)
         }
         else 
         {
-            p.acceleration.x = 0.0f;
-            p.acceleration.y = 0.0f;
+            p.acceleration.x = 0.5f;
+            p.acceleration.y = 0.5f;
         }
     }
-    else 
-    {
-        p.acceleration.x = 0.0f;
-        p.acceleration.y = 0.0f;
-    }
+    //else 
+    //{
+    //    p.acceleration.x = 0.0f;
+    //    p.acceleration.y = 0.0f;
+    //}
 
-    if (IsMouseButtonUp(MOUSE_LEFT_BUTTON)) 
-    {
-        if (p.speed.x > 0) {
-            p.speed.x -= DECELERATION_RATE * GetFrameTime();
-        }
-        else if (p.speed.x < 0) 
-        {
-            p.speed.x += DECELERATION_RATE * GetFrameTime();
-        }
-
-        if (p.speed.y > 0) {
-            p.speed.y -= DECELERATION_RATE * GetFrameTime();
-        }
-        else if (p.speed.y < 0) 
-        {
-            p.speed.y += DECELERATION_RATE * GetFrameTime();
-        }
-    }
+    //if (IsMouseButtonUp(MOUSE_LEFT_BUTTON)) 
+    //{
+    //    if (p.speed.x > 0) {
+    //        p.speed.x -= DECELERATION_RATE * GetFrameTime();
+    //    }
+    //    else if (p.speed.x < 0) 
+    //    {
+    //        p.speed.x += DECELERATION_RATE * GetFrameTime();
+    //    }
+    //
+    //    if (p.speed.y > 0) {
+    //        p.speed.y -= DECELERATION_RATE * GetFrameTime();
+    //    }
+    //    else if (p.speed.y < 0) 
+    //    {
+    //        p.speed.y += DECELERATION_RATE * GetFrameTime();
+    //    }
+    //}
 
     p.speed.x += p.acceleration.x * GetFrameTime();
     p.speed.y += p.acceleration.y * GetFrameTime();
@@ -75,6 +75,26 @@ void updatePlayer(Player& p)
         Vector2 speedNormalized = { p.speed.x / speedMagnitude, p.speed.y / speedMagnitude };
         p.speed.x = speedNormalized.x * p.maxSpeed;
         p.speed.y = speedNormalized.y * p.maxSpeed;
+    }
+
+    if (p.position.x < static_cast<float>(screenWidthMin))
+    {
+        p.position.x = static_cast<float>(screenWidth);
+    }
+
+    if (p.position.x > static_cast<float>(screenWidth))
+    {
+        p.position.x = static_cast<float>(screenWidthMin);
+    }
+
+    if (p.position.y < static_cast<float>(screenHeightMin))
+    {
+        p.position.y = static_cast<float>(screenHeight);
+    }
+
+    if (p.position.y > static_cast<float>(screenHeight))
+    {
+        p.position.y = static_cast<float>(screenHeightMin);
     }
 
     p.position.x += p.speed.x * GetFrameTime();

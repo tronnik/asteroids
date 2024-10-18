@@ -5,11 +5,13 @@
 //static void update();
 //static void draw();
 //static void close();
-
+//
+//bool menuOn = true;
+//bool gameOver = false;
+//
 //void run()
 //{
-//
-//	
+//	Initialization();
 //
 //	while (!WindowShouldClose())
 //	{
@@ -21,53 +23,55 @@
 //
 //void Initialization()
 //{
-//	
+//	InitWindow(screenWidth, screenHeight, "basic window");
+//
+//	initGameplay();
 //}
 //
 //void update()
 //{
-//	//if (!menuOn && !gameOver)
-//	//{
-//	//	updateGameplay();
-//	//
-//	//	if (player1.score >= 10 || player2.score >= 10)
-//	//	{
-//	//		gameOver = true;
-//	//	}
-//	//}
-//	//
-//	//if (gameOver)
-//	//{
-//	//	if (slGetKey(SL_KEY_ENTER))
-//	//	{
-//	//		initGameplay();
-//	//		gameOver = false;
-//	//		menuOn = true;
-//	//	}
-//	//}
+//	if (!menuOn && !gameOver)
+//	{
+//		updateGameplay();
+//
+//		if (player1.score >= 10 || player2.score >= 10)
+//		{
+//			gameOver = true;
+//		}
+//	}
+//
+//	if (gameOver)
+//	{
+//		if (IsKeyPressed(KEY_ENTER))
+//		{
+//			initGameplay();
+//			gameOver = false;
+//			menuOn = true;
+//		}
+//	}
 //}
 //
 //void draw()
 //{
-//	
+//	BeginDrawing();
 //
-//	//if (menuOn)
-//	//{
-//	//	slSprite(backgroundImage, textX / 2, textY / 2, 1000, 1000);
-//	//	drawMenu();
-//	//	if (slGetKey(SL_KEY_ENTER)) menuOn = false;
-//	//}
-//	//else if (gameOver)
-//	//{
-//	//	drawGameOver();
-//	//	slSprite(winnerImage, (textX / 2 + 250), (textY - textY + 300), 100, 100);
-//	//}
-//	//else
-//	//{
-//	//	drawGameplay();
-//	//}
+//	ClearBackground(BLACK);
 //
-//	
+//	if (menuOn)
+//	{
+//		drawMenu();
+//		if (IsKeyPressed(KEY_ENTER)) menuOn = false;
+//	}
+//	else if (gameOver)
+//	{
+//		drawGameOver();
+//	}
+//	else
+//	{
+//		drawGameplay();
+//	}
+//
+//	EndDrawing();
 //}
 //
 //void close()
