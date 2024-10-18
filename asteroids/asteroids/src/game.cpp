@@ -20,7 +20,6 @@ bool gameOver = false;
 void run()
 {
 	Initialization();
-
 	SetTargetFPS(60 * static_cast<int>(GetFrameTime()));
 
 	while (!WindowShouldClose())
