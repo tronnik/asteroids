@@ -1,55 +1,90 @@
 #include "player.h"
-#include "raylib.h"
-#include <math.h>
+#include <math.h>  
 #include "utils.h"
 
-Player player; 
-Player mousePlayer;
+const float DECELERATION_RATE = 400.0f; 
+const float ACCELERATION_RATE = 1000.0f;
+Player player;
 
-void initPlayer(Player& p)  
+void initPlayer(Player& p) 
 {
-    p.posX = 5.0f;
-    p.posY = 5.0f;
+    p.position = { static_cast<float>(screenWidth) / 2.0f,static_cast<float>(screenHeight) / 2.0f };
+    p.speed = { 0.0f, 0.0f };
+    p.acceleration = { 0.0f, 0.0f };
+    p.maxSpeed = 600.0f;  
     p.width = 30.0f;
     p.height = 30.0f;
-    p.actualSpeed = 25.0f;
-    p.maxSpeed = 30.0f;
+    p.angle = 0.0f;  
 }
 
-void initPos()
+void updatePlayer(Player& p) 
 {
-    player.posX = static_cast<float>(screenWidth) / 2.0f;
-    player.posY = static_cast<float>(screenHeight) / 2.0f;
-}
+    Vector2 mousePosition = GetMousePosition();
+    Vector2 direction = { mousePosition.x - p.position.x, mousePosition.y - p.position.y }; 
 
-void updateMousePos(Player& m)
-{
-    m.posX = static_cast<float>(GetMouseX());
-    m.posY = static_cast<float>(GetMouseY());
-}
+    float magnitude = sqrtf(direction.x * direction.x + direction.y * direction.y);
 
-void movePlayer(Player& p, Player& m)
-{
-    if (IsKeyDown(KEY_UP))
+    if (magnitude != 0.0f) 
     {
-        p.posY = m.posY;
-        p.posX = m.posX;
+        p.angle = atan2f(direction.y, direction.x) * (180.0f / PI); 
+
+        Vector2 directionNormalized = { direction.x / magnitude, direction.y / magnitude };
+
+        if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) 
+        {
+            p.acceleration.x = directionNormalized.x * ACCELERATION_RATE; 
+            p.acceleration.y = directionNormalized.y * ACCELERATION_RATE;
+        }
+        else 
+        {
+            p.acceleration.x = 0.0f;
+            p.acceleration.y = 0.0f;
+        }
     }
+    else 
+    {
+        p.acceleration.x = 0.0f;
+        p.acceleration.y = 0.0f;
+    }
+
+    if (IsMouseButtonUp(MOUSE_LEFT_BUTTON)) 
+    {
+        if (p.speed.x > 0) {
+            p.speed.x -= DECELERATION_RATE * GetFrameTime();
+        }
+        else if (p.speed.x < 0) 
+        {
+            p.speed.x += DECELERATION_RATE * GetFrameTime();
+        }
+
+        if (p.speed.y > 0) {
+            p.speed.y -= DECELERATION_RATE * GetFrameTime();
+        }
+        else if (p.speed.y < 0) 
+        {
+            p.speed.y += DECELERATION_RATE * GetFrameTime();
+        }
+    }
+
+    p.speed.x += p.acceleration.x * GetFrameTime();
+    p.speed.y += p.acceleration.y * GetFrameTime();
+
+    float speedMagnitude = sqrtf(p.speed.x * p.speed.x + p.speed.y * p.speed.y);
+    if (speedMagnitude > p.maxSpeed) 
+    {
+        Vector2 speedNormalized = { p.speed.x / speedMagnitude, p.speed.y / speedMagnitude };
+        p.speed.x = speedNormalized.x * p.maxSpeed;
+        p.speed.y = speedNormalized.y * p.maxSpeed;
+    }
+
+    p.position.x += p.speed.x * GetFrameTime();
+    p.position.y += p.speed.y * GetFrameTime();
 }
 
-void drawPlayer(Player& p, Player& m)
+void drawPlayer(Player& p) 
 {
-    float dx = m.posX - p.posX;  // Diferencia en X entre jugador y mouse
-    float dy = m.posY - p.posY;  // Diferencia en Y entre jugador y mouse
-    float angle = atan2f(dy, dx);   // Calcular el ángulo en radianes
-
-    // Dibujar el jugador rotado
-    DrawRectanglePro(Rectangle{ p.posX, p.posY , p.width, p.height },  Vector2{ p.width / 2, p.height / 2 },  
-        angle * (180.0f / PI),  // Convertir a grados para la función de rotación
-        RED  
-    );
+    DrawRectanglePro(Rectangle{ p.position.x, p.position.y , p.width, p.height }, Vector2{ p.width / 2, p.height / 2 }, p.angle, RED);
 }
-
 
 
 

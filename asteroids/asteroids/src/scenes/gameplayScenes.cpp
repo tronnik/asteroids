@@ -4,16 +4,14 @@
 void initGameplay()
 {
 	initPlayer(player);
-	initPos();
 }
 
 void updateGameplay()
 {
-	updateMousePos(mousePlayer);
-	movePlayer(player,mousePlayer);
+	updatePlayer(player);
 }
 
 void drawGameplay()
 {
-	drawPlayer(player, mousePlayer);
+	drawPlayer(player);
 }

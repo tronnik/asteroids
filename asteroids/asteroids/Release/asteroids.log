@@ -5,7 +5,7 @@
   menuScenes.cpp
   Generando código
   Previous IPDB not found, fall back to full compilation.
-  All 10 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 9 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Generación de código finalizada
 raylib.lib(rcore.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(rcore.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(rglfw.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(rglfw.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
@@ -13,4 +13,4 @@ raylib.lib(rshapes.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.li
 raylib.lib(rtext.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(rtext.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(rtextures.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(rtextures.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(utils.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(utils.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-  asteroids.vcxproj -> C:\Users\Aula 1\source\repos\asteroids\asteroids\Release\asteroids.exe
+  asteroids.vcxproj -> C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\Release\asteroids.exe

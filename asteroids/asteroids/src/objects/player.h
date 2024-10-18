@@ -1,25 +1,26 @@
 #pragma once
 
-struct Player
+#include "raylib.h"
+
+struct Player 
 {
-    float posY;
-    float posX;
+    Vector2 position;
+    Vector2 speed;
+    Vector2 acceleration;
+    float maxSpeed;
     float width;
     float height;
-    float actualSpeed;
-    float maxSpeed;
+    float angle;
 };
 
-extern Player player;  
-extern Player mousePlayer;
+extern Player player;
 
-void initPlayer(Player& player);
-void initPos();
+void initPlayer(Player& p);
+void updatePlayer(Player& p);
+void drawPlayer(Player& p);
 
-void updateMousePos(Player& mousePlayer);
-void movePlayer(Player& player, Player& mousePlayer);
 
-void drawPlayer(Player& player, Player& mousePlayer);
+
 
 
 

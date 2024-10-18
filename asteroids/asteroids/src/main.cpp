@@ -1,40 +1,33 @@
-#include <iostream>
-#include "utils.h"
 #include "raylib.h"
 #include "player.h"
+#include "utils.h"
 #include "gameplayScenes.h"
 
-using namespace std;
 
-int screenWidth = 1024; 
+int screenWidth = 1024;
 int screenHeight = 768;
 
-int main()
+int main() 
 {
-    // Inicialización
-    InitWindow(screenWidth, screenHeight, "Asteroids");
+    InitWindow(screenWidth, screenHeight, "asteroids");
+
     initGameplay();
 
-    // Loop
-    while (!WindowShouldClose())
-    {
-        
-        // Chequeo de Input
-        
+    SetTargetFPS(60); 
+
+    while (!WindowShouldClose()) 
+    {  
         updateGameplay();
 
-        // Actualización
-
-        // Dibujado
         BeginDrawing();
-        ClearBackground(WHITE); // system("cls");
+        ClearBackground(RAYWHITE);  
 
-        
         drawGameplay();
 
         EndDrawing();
     }
 
-    // Cierre
     CloseWindow();
+
+    return 0;
 }
