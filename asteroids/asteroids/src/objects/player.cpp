@@ -80,7 +80,11 @@ void updatePlayer(Player& p)
 
 void drawPlayer(Player& p) 
 {
+    Texture2D spaceShip = LoadTexture("res/spaceShip.png");
+
     DrawRectanglePro(Rectangle{ p.position.x, p.position.y , p.width, p.height }, Vector2{ p.width / 2, p.height / 2 }, p.angle, RED);
+    DrawTextureEx(spaceShip, p.position, p.angle, 1.0f, WHITE);
+    //DrawTexture(spaceShip, static_cast<int>(p.position.x) - 25, static_cast<int>(p.position.y) - 25, RED);
 }
 
 
