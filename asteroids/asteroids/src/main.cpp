@@ -1,11 +1,12 @@
-#include "raylib.h"
-#include "player.h"
-#include "utils.h"
-#include "gameplayScenes.h"
-#include "menuScenes.h"
-#include "game.h"
-
-
+//#include "raylib.h"
+//#include "player.h"
+//#include "utils.h"
+//#include "gameplayScenes.h"
+//#include "menuScenes.h"
+//#include "button.h"
+//#include "buttonsInfo.h"
+//
+//
 //int screenWidth = 1024;
 //int screenHeight = 768;
 //int screenWidthMin = 0;
@@ -16,7 +17,7 @@
 //    InitWindow(screenWidth, screenHeight, "asteroids");
 //
 //  // initGameplay();
-//   
+//    //initButton(button);
 //    SetTargetFPS(60); 
 //
 //    while (!WindowShouldClose()) 
@@ -26,9 +27,9 @@
 //        BeginDrawing();
 //        ClearBackground(RAYWHITE);  
 //
-//        drawMenu();
+//        drawCredits();
 //      
-//       
+//
 //        EndDrawing();
 //    }
 //
@@ -37,8 +38,12 @@
 //    return 0;
 //}
 
+#include "game.h"
+
+
 int main()
 {
 	run();
+	
 
 }

@@ -4,6 +4,7 @@
 #include "gameplayScenes.h"
 #include "menuScenes.h"
 
+
 static void Initialization();
 static void update();
 static void draw();
@@ -23,8 +24,7 @@ void run()
 	SetTargetFPS(60);
 
 	while (!WindowShouldClose())
-	{
-		
+	{		
 		update();
 		draw();
 	}
@@ -34,9 +34,11 @@ void run()
 
 void Initialization()
 {
-	InitWindow(screenWidth, screenHeight, "basic window");
+	InitWindow(screenWidth, screenHeight, "asteroids");
 
 	initGameplay();
+
+	initMenu();
 }
 
 void update()
@@ -55,16 +57,16 @@ void draw()
 {
 	BeginDrawing();
 
-	ClearBackground(BLACK);
+	ClearBackground(WHITE);
 
 	if (menuOn)
 	{
-		drawMenu();
+		drawMenu(menuOn);
 		if (IsKeyPressed(KEY_ENTER)) menuOn = false;
 	}
 	else if (gameOver)
 	{
-		drawGameOver();
+		//drawGameOver();
 	}
 	else
 	{

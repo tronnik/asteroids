@@ -1,5 +1,6 @@
 #pragma once
 
-void drawMenu();
-void drawGameOver();
+void initMenu();
+void drawMenu(bool& menuOn);
+//void drawGameOver();
 

@@ -22,14 +22,18 @@
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\objects\button.cpp" />
+    <ClCompile Include="src\objects\buttonsInfo.cpp" />
     <ClCompile Include="src\objects\player.cpp" />
+    <ClCompile Include="src\objects\projectile.cpp" />
     <ClCompile Include="src\scenes\gameplayScenes.cpp" />
     <ClCompile Include="src\scenes\menuScenes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\objects\button.h" />
+    <ClInclude Include="src\objects\buttonsInfo.h" />
     <ClInclude Include="src\objects\player.h" />
+    <ClInclude Include="src\objects\projectile.h" />
     <ClInclude Include="src\objects\utils.h" />
     <ClInclude Include="src\scenes\gameplayScenes.h" />
     <ClInclude Include="src\scenes\menuScenes.h" />

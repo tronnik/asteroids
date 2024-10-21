@@ -1,6 +1,8 @@
-C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\src\game.cpp;C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\Release\game.obj
-C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\src\main.cpp;C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\Release\main.obj
-C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\src\objects\button.cpp;C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\Release\button.obj
-C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\src\objects\player.cpp;C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\Release\player.obj
-C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\src\scenes\gameplayScenes.cpp;C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\Release\gameplayScenes.obj
-C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\src\scenes\menuScenes.cpp;C:\Users\Aula 1\source\repos\asteroids\asteroids\asteroids\Release\menuScenes.obj
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\game.cpp;C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\Release\game.obj
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\main.cpp;C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\Release\main.obj
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\objects\button.cpp;C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\Release\button.obj
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\objects\buttonsInfo.cpp;C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\Release\buttonsInfo.obj
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\objects\player.cpp;C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\Release\player.obj
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\objects\projectile.cpp;C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\Release\projectile.obj
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\scenes\gameplayScenes.cpp;C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\Release\gameplayScenes.obj
+C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\src\scenes\menuScenes.cpp;C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\asteroids\Release\menuScenes.obj
