@@ -11,9 +11,9 @@ struct Projectile
     bool active; 
 };
 
-#define MAX_PROJECTILES 10000 
+#define maxProjectiles 10000 
 
-extern Projectile projectiles[MAX_PROJECTILES];
+extern Projectile projectiles[maxProjectiles];
 extern int projectileCount;
 
 void shoot(Player& p);

@@ -29,6 +29,8 @@ void run()
 		draw();
 	}
 
+	unloadGameplay();
+
 	close();
 }
 

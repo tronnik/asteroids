@@ -24,8 +24,7 @@ void initPlayer(Player& p)
     p.direction = { 0.0f, 0.0f };
     p.directionNormalized = { 0.0f, 0.0f };
 
-    p.width = 30.0f;
-    p.height = 30.0f;
+    p.radius = 20.0f;
     p.angle = 0.0f;  
 
     p.ammoSpeed = 200.0f;
@@ -69,25 +68,13 @@ void updatePlayer(Player& p)
         p.speed.y = speedNormalized.y * p.maxSpeed;
     }
 
-    if (p.position.x < static_cast<float>(screenWidthMin))
-    {
-        p.position.x = static_cast<float>(screenWidth);
-    }
+    if (p.position.x < static_cast<float>(screenWidthMin)) p.position.x = static_cast<float>(screenWidth);
+    
+    if (p.position.x > static_cast<float>(screenWidth)) p.position.x = static_cast<float>(screenWidthMin);
 
-    if (p.position.x > static_cast<float>(screenWidth))
-    {
-        p.position.x = static_cast<float>(screenWidthMin);
-    }
+    if (p.position.y < static_cast<float>(screenHeightMin)) p.position.y = static_cast<float>(screenHeight);
 
-    if (p.position.y < static_cast<float>(screenHeightMin))
-    {
-        p.position.y = static_cast<float>(screenHeight);
-    }
-
-    if (p.position.y > static_cast<float>(screenHeight))
-    {
-        p.position.y = static_cast<float>(screenHeightMin);
-    }
+    if (p.position.y > static_cast<float>(screenHeight)) p.position.y = static_cast<float>(screenHeightMin);
 
     p.position.x += p.speed.x * GetFrameTime();
     p.position.y += p.speed.y * GetFrameTime();
@@ -100,13 +87,13 @@ void updatePlayer(Player& p)
 void drawPlayer(Player& p) 
 {
 
-    DrawRectanglePro(Rectangle{ p.position.x, p.position.y , p.width, p.height }, Vector2{ p.width / 2, p.height / 2 }, p.angle, RED);
-   // DrawTextureEx(spaceShip, { p.position.x, p.position.y }, p.angle + 90.0f, 1.0f, WHITE);
+    DrawCircle(static_cast<int>(p.position.x), static_cast<int>(p.position.y), p.radius, RED);
+     DrawTextureEx(spaceShip, { p.position.x, p.position.y }, p.angle + 90.0f, 1.0f, WHITE);
 
     drawProjectiles();
 }
 
-void unloadTexture()
+void unloadPlayer()
 {
     UnloadTexture(spaceShip);
 }

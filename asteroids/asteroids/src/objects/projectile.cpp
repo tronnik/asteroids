@@ -1,14 +1,13 @@
 #include "projectile.h"
 #include "utils.h"
 
-Projectile projectiles[MAX_PROJECTILES];
+Projectile projectiles[maxProjectiles];
 int projectileCount = 0;
 
 void shoot(Player& p)
 {
-    if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON) && projectileCount < MAX_PROJECTILES)
+    if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON) && projectileCount < maxProjectiles)
     {
-        // Inicializa el proyectil en la posición del jugador
         projectiles[projectileCount].position = p.position;
         projectiles[projectileCount].direction = p.directionNormalized;
         projectiles[projectileCount].speed = p.ammoSpeed;
@@ -24,11 +23,9 @@ void updateProjectiles()
     {
         if (projectiles[i].active)
         {
-            // Actualiza la posición del proyectil
             projectiles[i].position.x += projectiles[i].direction.x * projectiles[i].speed * GetFrameTime();
             projectiles[i].position.y += projectiles[i].direction.y * projectiles[i].speed * GetFrameTime();
 
-            // Desactiva el proyectil si sale de los límites de la pantalla
             if (projectiles[i].position.x < 0 || projectiles[i].position.x > screenWidth ||
                 projectiles[i].position.y < 0 || projectiles[i].position.y > screenHeight)
             {

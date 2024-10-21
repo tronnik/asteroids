@@ -6,3 +6,5 @@ void updateGameplay();
 
 void drawGameplay();
 
+void unloadGameplay();
+
