@@ -1,5 +1,4 @@
-asteroids/.vs
-asteroids/debug
-asteroids/asteroids/x64
-asteroids/Release
-asteroids/asteroids/Release
+asteroids/.vs/
+asteroids/**/debug/
+asteroids/**/release/
+asteroids/**/x64/
