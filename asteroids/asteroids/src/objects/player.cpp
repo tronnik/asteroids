@@ -88,7 +88,7 @@ void drawPlayer(Player& p)
 {
 
     DrawCircle(static_cast<int>(p.position.x), static_cast<int>(p.position.y), p.radius, RED);
-     DrawTextureEx(spaceShip, { p.position.x, p.position.y }, p.angle + 90.0f, 1.0f, WHITE);
+    // DrawTextureEx(spaceShip, { p.position.x, p.position.y }, p.angle + 90.0f, 1.0f, WHITE);
 
     drawProjectiles();
 }

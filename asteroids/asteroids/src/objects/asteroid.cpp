@@ -1,9 +1,12 @@
 #include "asteroid.h"
 #include "utils.h"
+#include "projectile.h"
 #include <random>
 
 Texture2D enemy;
 Asteroid asteroids[maxAsteroids];
+
+bool isCollision = false;
 
 void initAsteroid()
 {
@@ -12,7 +15,7 @@ void initAsteroid()
 		asteroids[i].position = { static_cast<float>(rand() % screenWidth), static_cast<float>(rand() % screenHeight) };
 		asteroids[i].speed = { static_cast<float>(rand() % 200), static_cast<float>(rand() % 200) };
 		asteroids[i].direction = { asteroids[i].speed.x, asteroids[i].speed.y };
-		asteroids[i].radius = 0.0f + static_cast<float>(rand() % 20);
+		asteroids[i].radius = 20.0f + static_cast<float>(rand() % 20);
 
 		enemy = LoadTexture("res/asteroid-1.png");
 	}
@@ -32,11 +35,31 @@ void updateAsteroid()
 	}
 }
 
+void checkCollsion()
+{
+	for (int i = 0; i < maxAsteroids && i < projectileCount; i++)
+	{
+		float distanceX = asteroids[i].position.x - projectiles[i].position.x;
+		float distanceY = asteroids[i].position.y - projectiles[i].position.y;
+		float distance = sqrt((distanceX * distanceX) + (distanceY * distanceY));
+
+		if (distance <= asteroids[i].radius + 5.0f)
+		{
+			isCollision = true;
+		}
+		isCollision = false;
+
+	}
+}
+
 void drawAsteroid()
 {
 	for (int i = 0; i < maxAsteroids; i++)
 	{
-		DrawCircle(static_cast<int>(asteroids[i].position.x), static_cast<int>(asteroids[i].position.y), asteroids[i].radius, GREEN);
+		if (!isCollision)
+		{
+			DrawCircle(static_cast<int>(asteroids[i].position.x), static_cast<int>(asteroids[i].position.y), asteroids[i].radius, GREEN);
+		}
 	}
 }
 

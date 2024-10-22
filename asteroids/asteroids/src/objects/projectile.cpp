@@ -11,6 +11,7 @@ void shoot(Player& p)
         projectiles[projectileCount].position = p.position;
         projectiles[projectileCount].direction = p.directionNormalized;
         projectiles[projectileCount].speed = p.ammoSpeed;
+        //projectiles[projectileCount].radius = 5.0f;
         projectiles[projectileCount].active = true;
 
         projectileCount++;

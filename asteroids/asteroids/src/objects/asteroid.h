@@ -15,6 +15,7 @@ extern Asteroid asteroids[maxAsteroids];
 
 void initAsteroid();
 void updateAsteroid();
+void checkCollsion();
 void drawAsteroid();
 void unloadAsteroid();
 

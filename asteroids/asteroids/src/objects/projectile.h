@@ -9,6 +9,7 @@ struct Projectile
     Vector2 direction;
     float speed;
     bool active; 
+    float radius;
 };
 
 #define maxProjectiles 10000 
