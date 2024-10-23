@@ -1,21 +1,38 @@
 #include "asteroid.h"
 #include "utils.h"
-#include "projectile.h"
 #include <random>
 
 Texture2D enemy;
 Asteroid asteroids[maxAsteroids];
 
-bool isCollision = false;
 
 void initAsteroid()
 {
 	for (int i = 0; i < maxAsteroids; i++)
 	{
-		asteroids[i].position = { static_cast<float>(rand() % screenWidth), static_cast<float>(rand() % screenHeight) };
+		int side = GetRandomValue(0, 3);
+
+		switch (side)
+		{
+		case 0:
+			asteroids[i].position = { 0.0f, static_cast<float>(GetRandomValue(0, screenHeight)) };
+			break;
+		case 1:
+			asteroids[i].position = { static_cast<float>(screenWidth), static_cast<float>(GetRandomValue(0, screenHeight)) };
+			break;
+		case 2:
+			asteroids[i].position = { static_cast<float>(GetRandomValue(0, screenWidth)), 0.0f };
+			break;
+		case 3:
+			asteroids[i].position = { static_cast<float>(GetRandomValue(0, screenWidth)), static_cast<float>(screenHeight) };
+			break;
+		}
+
+		//asteroids[i].position = { static_cast<float>(rand() % screenWidth), static_cast<float>(rand() % screenHeight) };
 		asteroids[i].speed = { static_cast<float>(rand() % 200), static_cast<float>(rand() % 200) };
 		asteroids[i].direction = { asteroids[i].speed.x, asteroids[i].speed.y };
-		asteroids[i].radius = 20.0f + static_cast<float>(rand() % 20);
+		asteroids[i].radius = 50.0f + static_cast<float>(rand() % 20);
+		asteroids[i].isActive = true;
 
 		enemy = LoadTexture("res/asteroid-1.png");
 	}
@@ -35,20 +52,37 @@ void updateAsteroid()
 	}
 }
 
-void checkCollsion()
+bool checkCollsion(Asteroid asteroid, Projectile projectile)
 {
-	for (int i = 0; i < maxAsteroids && i < projectileCount; i++)
+	float distX = asteroid.position.x - projectile.position.x;
+	float distY = asteroid.position.y - projectile.position.y;
+	float distance = sqrt((distX * distX) + (distY * distY));
+
+	if (distance <= asteroid.radius + projectile.radius)
 	{
-		float distanceX = asteroids[i].position.x - projectiles[i].position.x;
-		float distanceY = asteroids[i].position.y - projectiles[i].position.y;
-		float distance = sqrt((distanceX * distanceX) + (distanceY * distanceY));
+		return true;
+	}
+	return false;
+}
 
-		if (distance <= asteroids[i].radius + 5.0f)
+void checkAsteroidCollisions()
+{
+	for (int i = 0; i < maxAsteroids; i++)
+	{
+		if (asteroids[i].isActive)
 		{
-			isCollision = true;
+			for (int j = 0; j < projectileCount; j++)
+			{
+				if (projectiles[j].isActive)
+				{
+					if (checkCollsion(asteroids[i], projectiles[j]))
+					{
+						asteroids[i].isActive = false;
+						projectiles[j].isActive = false;
+					}
+				}
+			}
 		}
-		isCollision = false;
-
 	}
 }
 
@@ -56,11 +90,13 @@ void drawAsteroid()
 {
 	for (int i = 0; i < maxAsteroids; i++)
 	{
-		if (!isCollision)
+		if (asteroids[i].isActive)
 		{
-			DrawCircle(static_cast<int>(asteroids[i].position.x), static_cast<int>(asteroids[i].position.y), asteroids[i].radius, GREEN);
+			DrawTextureEx(enemy, { asteroids[i].position.x ,  asteroids[i].position.y }, 0.0f, 2.0f, WHITE);
 		}
 	}
+
+	
 }
 
 void unloadAsteroid()

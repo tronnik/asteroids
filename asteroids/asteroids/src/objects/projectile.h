@@ -3,12 +3,12 @@
 #include "raylib.h"
 #include "player.h"
 
-struct Projectile 
+struct Projectile
 {
     Vector2 position;
     Vector2 direction;
     float speed;
-    bool active; 
+    bool isActive;
     float radius;
 };
 
@@ -17,8 +17,10 @@ struct Projectile
 extern Projectile projectiles[maxProjectiles];
 extern int projectileCount;
 
-void shoot(Player& p);
+void fire(Player& p);
 void updateProjectiles();
 void drawProjectiles();
+
+
 
 

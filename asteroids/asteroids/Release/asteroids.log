@@ -1,6 +1,6 @@
 ﻿  asteroid.cpp
   Generando código
-  3 of 28 functions (10.7%) were compiled, the rest were copied from previous compilation.
+  4 of 31 functions (12.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
@@ -10,4 +10,4 @@ raylib.lib(rshapes.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.li
 raylib.lib(rtext.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(rtext.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(rtextures.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(rtextures.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(utils.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(utils.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-  asteroids.vcxproj -> C:\Users\Aula 2\source\repos\asteroids\asteroids\Release\asteroids.exe
+  asteroids.vcxproj -> C:\PROYECTOS VISUAL STUDIO\segundo cuatri. desarrollo\asteroids\asteroids\Release\asteroids.exe

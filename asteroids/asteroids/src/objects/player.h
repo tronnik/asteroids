@@ -2,7 +2,7 @@
 
 #include "raylib.h"
 
-struct Player 
+struct Player
 {
     Vector2 position;
     Vector2 speed;
@@ -22,8 +22,6 @@ void initPlayer(Player& p);
 void updatePlayer(Player& p);
 void drawPlayer(Player& p);
 void unloadPlayer();
-
-
 
 
 
