@@ -2,6 +2,8 @@
 
 #include "raylib.h"
 
+struct Asteroid;
+
 struct Player
 {
     Vector2 position;
@@ -14,13 +16,19 @@ struct Player
     float radius;
     float angle;
     float ammoSpeed;
+    bool isActive;
+    int life;
+    float respawnTime;
 };
 
 extern Player player;
 
 void initPlayer(Player& p);
 void updatePlayer(Player& p);
+bool checkCollsion(Player p, Asteroid asteroid);
+void checkPlayerCollisions(Player& p);
 void drawPlayer(Player& p);
+void drawLives(Player& p);
 void unloadPlayer();
 
 

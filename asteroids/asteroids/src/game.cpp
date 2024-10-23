@@ -4,7 +4,6 @@
 #include "gameplayScenes.h"
 #include "menuScenes.h"
 
-
 static void Initialization();
 static void update();
 static void draw();

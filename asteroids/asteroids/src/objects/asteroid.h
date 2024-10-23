@@ -19,6 +19,7 @@ void initAsteroid();
 void updateAsteroid();
 bool checkCollsion(Asteroid asteroid, Projectile projectiles);
 void checkAsteroidCollisions();
+void regenerateAsteroid();
 void drawAsteroid();
 void unloadAsteroid();
 

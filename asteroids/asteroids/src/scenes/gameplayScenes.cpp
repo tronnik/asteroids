@@ -15,6 +15,7 @@ void updateGameplay()
 	updatePlayer(player);
 	updateAsteroid();
 	checkAsteroidCollisions();
+	checkPlayerCollisions(player);
 }
 
 void drawGameplay()
@@ -25,6 +26,7 @@ void drawGameplay()
 	drawPlayer(player);
 	drawAsteroid();
 
+	drawLives(player);
 }
 
 void unloadGameplay()

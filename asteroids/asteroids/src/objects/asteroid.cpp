@@ -5,7 +5,6 @@
 Texture2D enemy;
 Asteroid asteroids[maxAsteroids];
 
-
 void initAsteroid()
 {
 	for (int i = 0; i < maxAsteroids; i++)
@@ -28,7 +27,6 @@ void initAsteroid()
 			break;
 		}
 
-		//asteroids[i].position = { static_cast<float>(rand() % screenWidth), static_cast<float>(rand() % screenHeight) };
 		asteroids[i].speed = { static_cast<float>(rand() % 200), static_cast<float>(rand() % 200) };
 		asteroids[i].direction = { asteroids[i].speed.x, asteroids[i].speed.y };
 		asteroids[i].radius = 50.0f + static_cast<float>(rand() % 20);
@@ -82,6 +80,19 @@ void checkAsteroidCollisions()
 					}
 				}
 			}
+		}
+	}
+}
+
+void regenerateAsteroid()
+{
+	for (int i = 0; i < maxAsteroids; i++)
+	{
+		if (!asteroids[i].isActive)  
+		{
+			asteroids[i].position = { static_cast<float>(GetRandomValue(0, screenWidth)), static_cast<float>(GetRandomValue(0, screenHeight)) };
+			asteroids[i].radius = static_cast<float>(GetRandomValue(15, 30));
+			asteroids[i].isActive = true;  
 		}
 	}
 }

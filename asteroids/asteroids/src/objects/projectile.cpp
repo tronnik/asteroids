@@ -5,7 +5,6 @@ Projectile projectiles[maxProjectiles];
 int projectileCount = 0;
 Texture2D ammoShoot;
 
-
 void fire(Player& p)
 {
     if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON) && projectileCount < maxProjectiles)
@@ -13,7 +12,6 @@ void fire(Player& p)
         projectiles[projectileCount].position = p.position;
         projectiles[projectileCount].direction = p.directionNormalized;
         projectiles[projectileCount].speed = p.ammoSpeed;
-        //projectiles[projectileCount].radius = 5.0f;
         projectiles[projectileCount].isActive = true;
 
         projectileCount++;
@@ -40,7 +38,6 @@ void updateProjectiles()
     }
 }
 
-
 void drawProjectiles()
 {
     for (int i = 0; i < projectileCount; i++)
@@ -48,10 +45,6 @@ void drawProjectiles()
         if (projectiles[i].isActive)
         {
             float scale = 2.0f;
-
-            //DrawCircle(static_cast<int>(projectiles[i].position.x), static_cast<int>(projectiles[i].position.y), 5.0f, RED);
-           // DrawTextureEx(ammoShoot, { projectiles[i].position.x , projectiles[i].position.y  }, 0.0f, scale, WHITE);
-
             DrawTextureEx(ammoShoot, { projectiles[i].position.x - (projectiles[i].radius * scale) / 2, projectiles[i].position.y - (projectiles[i].radius * scale) / 2 }, 0.0f, scale, WHITE);
         }
     }
