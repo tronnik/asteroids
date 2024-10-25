@@ -14,7 +14,10 @@ int screenHeight = 768;
 int screenWidthMin = 0;
 int screenHeightMin = 0;
 
-bool menuOn = true;
+bool menuOn = true; 
+bool controlsOn = false;
+bool creditsOn = false;
+bool exitOn = false;
 bool gameOver = false;
 
 void run()
@@ -44,6 +47,10 @@ void Initialization()
 
 void update()
 {
+	if (controlsOn)
+	{
+		drawConstrols();
+	}
 	if (!menuOn && !gameOver)
 	{
 		updateGameplay();
@@ -62,7 +69,7 @@ void draw()
 
 	if (menuOn)
 	{
-		drawMenu(menuOn);
+		drawMenu(menuOn, controlsOn);
 		if (IsKeyPressed(KEY_ENTER)) menuOn = false;
 	}
 	else if (gameOver)

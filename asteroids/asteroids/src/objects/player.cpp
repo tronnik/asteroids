@@ -1,5 +1,7 @@
 #include "player.h"
-#include <math.h>  
+
+#include <cmath>  
+
 #include "utils.h"
 #include "projectile.h"
 #include "asteroid.h"
@@ -9,7 +11,7 @@ const float DECELERATION_RATE = 400.0f;
 const float ACCELERATION_RATE = 1000.0f;
 
 Player player;
-Texture2D spaceShip;
+static Texture2D spaceShip;
 
 bool isShooting = false;
 

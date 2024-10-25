@@ -1,6 +1,7 @@
 #pragma once
 
 void initMenu();
-void drawMenu(bool& menuOn);
+void drawMenu(bool& menuOn, bool& controlsOn);
+void drawConstrols();
 //void drawGameOver();
 

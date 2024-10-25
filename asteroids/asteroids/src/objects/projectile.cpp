@@ -1,9 +1,12 @@
 #include "projectile.h"
+
 #include "utils.h"
 
 Projectile projectiles[maxProjectiles];
-int projectileCount = 0;
-Texture2D ammoShoot;
+
+ int projectileCount = 0;
+
+static Texture2D ammoShoot;
 
 void fire(Player& p)
 {

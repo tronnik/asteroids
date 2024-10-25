@@ -1,8 +1,8 @@
-﻿  button.cpp
+﻿  game.cpp
   Generando código
-  2 of 39 functions ( 5.1%) were compiled, the rest were copied from previous compilation.
+  4 of 40 functions (10.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
 raylib.lib(rcore.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(rcore.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(rglfw.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(rglfw.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración

@@ -2,6 +2,8 @@
 
 #include "raylib.h"
 
+#include "menuScenes.h"
+
 struct Asteroid;
 
 struct Player

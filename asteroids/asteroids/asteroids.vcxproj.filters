@@ -13,81 +13,81 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de origen\scenas">
-      <UniqueIdentifier>{fc0f327a-4392-4f12-9878-41349cf97934}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\manejo">
-      <UniqueIdentifier>{cb16391e-9dd2-4674-bcda-76fed5087f6a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\objetos">
-      <UniqueIdentifier>{0b2affb2-dccc-44fd-9987-571ab8cf6979}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\escenas">
+    <Filter Include="Archivos de encabezado\scenes">
       <UniqueIdentifier>{aec5d483-dfd9-4798-8297-843f50c12218}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado\objetos">
+    <Filter Include="Archivos de encabezado\manage">
+      <UniqueIdentifier>{6c0016df-2d84-4050-9c98-a0465048235b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\objects">
       <UniqueIdentifier>{d7bcfdaf-bb1b-4ef9-8ef0-2db9f086b806}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado\manejo">
-      <UniqueIdentifier>{6c0016df-2d84-4050-9c98-a0465048235b}</UniqueIdentifier>
+    <Filter Include="Archivos de origen\manage">
+      <UniqueIdentifier>{cb16391e-9dd2-4674-bcda-76fed5087f6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\object">
+      <UniqueIdentifier>{0b2affb2-dccc-44fd-9987-571ab8cf6979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\scenes">
+      <UniqueIdentifier>{fc0f327a-4392-4f12-9878-41349cf97934}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\scenes\menuScenes.cpp">
-      <Filter>Archivos de origen\scenas</Filter>
+      <Filter>Archivos de origen\scenes</Filter>
     </ClCompile>
     <ClCompile Include="src\scenes\gameplayScenes.cpp">
-      <Filter>Archivos de origen\scenas</Filter>
+      <Filter>Archivos de origen\scenes</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
-      <Filter>Archivos de origen\manejo</Filter>
+      <Filter>Archivos de origen\manage</Filter>
     </ClCompile>
     <ClCompile Include="src\game.cpp">
-      <Filter>Archivos de origen\manejo</Filter>
+      <Filter>Archivos de origen\manage</Filter>
     </ClCompile>
     <ClCompile Include="src\objects\projectile.cpp">
-      <Filter>Archivos de origen\objetos</Filter>
+      <Filter>Archivos de origen\object</Filter>
     </ClCompile>
     <ClCompile Include="src\objects\player.cpp">
-      <Filter>Archivos de origen\objetos</Filter>
+      <Filter>Archivos de origen\object</Filter>
     </ClCompile>
     <ClCompile Include="src\objects\button.cpp">
-      <Filter>Archivos de origen\objetos</Filter>
+      <Filter>Archivos de origen\object</Filter>
     </ClCompile>
     <ClCompile Include="src\objects\asteroid.cpp">
-      <Filter>Archivos de origen\objetos</Filter>
+      <Filter>Archivos de origen\object</Filter>
     </ClCompile>
     <ClCompile Include="src\objects\buttonsInfo.cpp">
-      <Filter>Archivos de origen\objetos</Filter>
+      <Filter>Archivos de origen\object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\scenes\gameplayScenes.h">
-      <Filter>Archivos de encabezado\escenas</Filter>
+      <Filter>Archivos de encabezado\scenes</Filter>
     </ClInclude>
     <ClInclude Include="src\scenes\menuScenes.h">
-      <Filter>Archivos de encabezado\escenas</Filter>
+      <Filter>Archivos de encabezado\scenes</Filter>
     </ClInclude>
     <ClInclude Include="src\objects\utils.h">
-      <Filter>Archivos de encabezado\manejo</Filter>
+      <Filter>Archivos de encabezado\manage</Filter>
     </ClInclude>
     <ClInclude Include="src\game.h">
-      <Filter>Archivos de encabezado\manejo</Filter>
+      <Filter>Archivos de encabezado\manage</Filter>
     </ClInclude>
     <ClInclude Include="src\objects\asteroid.h">
-      <Filter>Archivos de encabezado\objetos</Filter>
+      <Filter>Archivos de encabezado\objects</Filter>
     </ClInclude>
     <ClInclude Include="src\objects\button.h">
-      <Filter>Archivos de encabezado\objetos</Filter>
+      <Filter>Archivos de encabezado\objects</Filter>
     </ClInclude>
     <ClInclude Include="src\objects\buttonsInfo.h">
-      <Filter>Archivos de encabezado\objetos</Filter>
+      <Filter>Archivos de encabezado\objects</Filter>
     </ClInclude>
     <ClInclude Include="src\objects\player.h">
-      <Filter>Archivos de encabezado\objetos</Filter>
+      <Filter>Archivos de encabezado\objects</Filter>
     </ClInclude>
     <ClInclude Include="src\objects\projectile.h">
-      <Filter>Archivos de encabezado\objetos</Filter>
+      <Filter>Archivos de encabezado\objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

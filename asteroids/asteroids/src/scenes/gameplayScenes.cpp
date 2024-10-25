@@ -1,8 +1,9 @@
 #include "gameplayScenes.h"
+
 #include "player.h"
 #include "asteroid.h"
 
-Texture2D background;
+static Texture2D background;
 
 void initGameplay()
 {

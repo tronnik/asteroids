@@ -1,8 +1,15 @@
 #include "button.h"
+
 #include "raylib.h"
+
 #include "utils.h"
 
 Button button;
+Button controls;
+Button credits;
+Button backToMenu;
+Button exit;
+
 
 void initButton(Button& b, int xPos, int yPos)
 {
@@ -29,43 +36,28 @@ bool isButtonPressed(Button& b)
         static_cast<float>(b.width), static_cast<float>(b.height) }) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
 }
 
-void initPlayButton()
+void drawPlayTitle()
 {
-    initButton(button, screenWidth / 2 - 100, screenHeight / 2 - 200);
+    DrawText(TextFormat("PLAY"), screenWidth / 2 - 40, 360, 30, RED);
 }
 
-void drawPlayButton(bool& menuOn)
+void drawControlTitle()
 {
-    drawButton(button);
-    if (isButtonPressed(button)) menuOn = false; 
-    
+    DrawText(TextFormat("CONTROLS"), screenWidth / 2 - 80, 460, 30, RED);
+}
+
+void drawCreditsTitle()
+{
+    DrawText(TextFormat("CREDITS"), screenWidth / 2 - 70, 560, 30, RED);
+}
+
+void drawExitTitle()
+{
+    DrawText(TextFormat("EXIT"), screenWidth / 2 - 40, 660, 30, RED);
 }
 
 
-void initControlsButton()
-{
-    initButton(button, screenWidth / 2 - 100, screenHeight / 2 - 300);
-}
 
-void drawControlsButton()
-{
-}
 
-void initCreditsButton()
-{
-    initButton(button, screenWidth / 2 - 100, screenHeight / 2 - 400);
-}
 
-void drawcreditsButton()
-{
-}
-
-void initExitButton()
-{
-    initButton(button, screenWidth / 2 - 100, screenHeight / 2 - 500);
-}
-
-void drawexitButton()
-{
-}
 

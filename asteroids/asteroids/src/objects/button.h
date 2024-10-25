@@ -11,20 +11,16 @@ struct Button
 };
 
 extern Button button;
+extern Button controls;
+extern Button credits;
+extern Button backToMenu;
+extern Button exit;
 
 void initButton(Button& b, int xPos, int yPos);
 void drawButton(Button& b);
 bool isButtonPressed(Button& b);
 
-void initPlayButton();
-void drawPlayButton(bool& menuOn);
-
-void initControlsButton();
-void drawControlsButton();
-
-void initCreditsButton();
-void drawcreditsButton();
-
-void initExitButton();
-void drawexitButton();
-
+void drawPlayTitle();
+void drawControlTitle();
+void drawCreditsTitle();
+void drawExitTitle();

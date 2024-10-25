@@ -1,6 +1,10 @@
 #include "asteroid.h"
+
+#include <iostream>
+
 #include "utils.h"
-#include <random>
+
+using namespace std;
 
 Texture2D enemy;
 Asteroid asteroids[maxAsteroids];
@@ -43,10 +47,17 @@ void updateAsteroid()
 		asteroids[i].position.x += asteroids[i].speed.x * GetFrameTime();
 		asteroids[i].position.y += asteroids[i].speed.y * GetFrameTime();
 
-		if (asteroids[i].position.x < static_cast<float>(screenWidthMin)) asteroids[i].position.x = static_cast<float>(screenWidth);
-		if (asteroids[i].position.x > static_cast<float>(screenWidth)) asteroids[i].position.x = static_cast<float>(screenWidthMin);
-		if (asteroids[i].position.y < static_cast<float>(screenHeightMin)) asteroids[i].position.y = static_cast<float>(screenHeight);
-		if (asteroids[i].position.y > static_cast<float>(screenHeight)) asteroids[i].position.y = static_cast<float>(screenHeightMin);
+		if (asteroids[i].position.x < static_cast<float>(screenWidthMin)) 
+			asteroids[i].position.x = static_cast<float>(screenWidth);
+
+		if (asteroids[i].position.x > static_cast<float>(screenWidth)) 
+			asteroids[i].position.x = static_cast<float>(screenWidthMin);
+
+		if (asteroids[i].position.y < static_cast<float>(screenHeightMin)) 
+			asteroids[i].position.y = static_cast<float>(screenHeight);
+
+		if (asteroids[i].position.y > static_cast<float>(screenHeight)) 
+			asteroids[i].position.y = static_cast<float>(screenHeightMin);
 	}
 }
 
