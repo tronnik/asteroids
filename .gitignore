@@ -1,6 +1,3 @@
 asteroids/.vs/
-asteroids/**/debug/
-asteroids/**/release/
-asteroids/**/x64/
-Release/
-asteroids/Release/
+asteroids/obj/
+asteroids/bin/
