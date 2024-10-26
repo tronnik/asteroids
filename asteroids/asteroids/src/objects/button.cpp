@@ -10,7 +10,6 @@ Button credits;
 Button backToMenu;
 Button exit;
 
-
 void initButton(Button& b, int xPos, int yPos)
 {
     b.posX = xPos;
@@ -43,17 +42,22 @@ void drawPlayTitle()
 
 void drawControlTitle()
 {
-    DrawText(TextFormat("CONTROLS"), screenWidth / 2 - 80, 460, 30, RED);
+    DrawText(TextFormat("CREDITS"), screenWidth / 2 - 70, 460, 30, RED); 
 }
 
 void drawCreditsTitle()
 {
-    DrawText(TextFormat("CREDITS"), screenWidth / 2 - 70, 560, 30, RED);
+    DrawText(TextFormat("CONTROLS"), screenWidth / 2 - 80, 560, 30, RED);
 }
 
 void drawExitTitle()
 {
     DrawText(TextFormat("EXIT"), screenWidth / 2 - 40, 660, 30, RED);
+}
+
+void drawBackToMenuTitle()
+{
+    DrawText(TextFormat("MENU"), screenWidth / 2 - 40, 660, 30, RED);
 }
 
 

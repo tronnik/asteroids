@@ -10,7 +10,7 @@ static Texture2D ammoShoot;
 
 void fire(Player& p)
 {
-    if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON) && projectileCount < maxProjectiles)
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && projectileCount < maxProjectiles)
     {
         projectiles[projectileCount].position = p.position;
         projectiles[projectileCount].direction = p.directionNormalized;

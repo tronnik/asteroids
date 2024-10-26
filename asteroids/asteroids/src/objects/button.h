@@ -24,3 +24,4 @@ void drawPlayTitle();
 void drawControlTitle();
 void drawCreditsTitle();
 void drawExitTitle();
+void drawBackToMenuTitle();

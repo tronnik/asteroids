@@ -1,5 +1,7 @@
 #include "game.h"
+
 #include "raylib.h"
+
 #include "utils.h"
 #include "gameplayScenes.h"
 #include "menuScenes.h"
@@ -19,6 +21,8 @@ bool controlsOn = false;
 bool creditsOn = false;
 bool exitOn = false;
 bool gameOver = false;
+
+Texture2D background;
 
 void run()
 {
@@ -47,10 +51,7 @@ void Initialization()
 
 void update()
 {
-	if (controlsOn)
-	{
-		drawConstrols();
-	}
+	
 	if (!menuOn && !gameOver)
 	{
 		updateGameplay();
@@ -65,12 +66,20 @@ void draw()
 {
 	BeginDrawing();
 
-	ClearBackground(WHITE);
+	ClearBackground(BLUE);
 
 	if (menuOn)
 	{
-		drawMenu(menuOn, controlsOn);
+		drawMenu(menuOn, controlsOn, creditsOn);
 		if (IsKeyPressed(KEY_ENTER)) menuOn = false;
+	}
+	else if (controlsOn)
+	{
+		drawConstrols(menuOn, controlsOn);
+	}
+	else if (creditsOn)
+	{
+		drawCredits(menuOn, creditsOn);
 	}
 	else if (gameOver)
 	{
@@ -82,9 +91,11 @@ void draw()
 	}
 
 	EndDrawing();
+	
 }
 
 void close()
 {
+	UnloadTexture(background);
 	CloseWindow();
 }

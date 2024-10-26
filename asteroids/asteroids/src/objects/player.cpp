@@ -53,7 +53,7 @@ void updatePlayer(Player& p)
 
 		p.directionNormalized = { p.direction.x / magnitude, p.direction.y / magnitude };
 
-		if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
+		if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON))
 		{
 			p.acceleration.x = p.directionNormalized.x * ACCELERATION_RATE;
 			p.acceleration.y = p.directionNormalized.y * ACCELERATION_RATE;
@@ -87,14 +87,14 @@ void updatePlayer(Player& p)
 	p.position.x += p.speed.x * GetFrameTime();
 	p.position.y += p.speed.y * GetFrameTime();
 
-	fire(p);
-
+	if (p.isActive)
+		fire(p);
+	
 	updateProjectiles();
 
 	if (p.life == 0)
-	{
 		CloseWindow();
-	}
+	
 }
 
 bool checkCollsion(Player p, Asteroid asteroid)
