@@ -37,10 +37,12 @@ void initPlayer(Player& p)
 	p.life = 3;
 	p.respawnTime = 1.0f;
 
+	p.point = 0;
+
 	spaceShip = LoadTexture("res/spaceShip.png");
 }
 
-void updatePlayer(Player& p)
+void updatePlayer(Player& p, bool& gameOver)
 {
 	p.mousePosition = GetMousePosition();
 	p.direction = { p.mousePosition.x - p.position.x, p.mousePosition.y - p.position.y };
@@ -93,7 +95,7 @@ void updatePlayer(Player& p)
 	updateProjectiles();
 
 	if (p.life == 0)
-		CloseWindow();
+		gameOver = true;
 	
 }
 
@@ -118,7 +120,6 @@ void checkPlayerCollisions(Player& p)
 		{
 			if (checkCollsion(p, asteroids[i]))
 			{
-				asteroids[i].isActive = false;
 				p.isActive = false;
 
 				p.life--;
@@ -127,8 +128,6 @@ void checkPlayerCollisions(Player& p)
 				{
 					p.respawnTime = 1.0f;
 				}
-
-				regenerateAsteroid();
 			}
 		}
 	}
@@ -149,11 +148,8 @@ void checkPlayerCollisions(Player& p)
 
 void drawPlayer(Player& p)
 {
-
 	if (p.isActive && p.life > 0)
 	{
-		//DrawCircle(static_cast<int>(p.position.x), static_cast<int>(p.position.y), p.radius, RED);
-
 		Rectangle source = { 0.0f, 0.0f, static_cast<float>(spaceShip.width), static_cast<float>(spaceShip.height) };
 
 		Rectangle dest = { p.position.x, p.position.y, p.radius * 2.0f, p.radius * 2.0f };  
@@ -164,12 +160,12 @@ void drawPlayer(Player& p)
 
 		DrawTexturePro(spaceShip, source, dest, origin, rotation, WHITE);
 	}
-	drawProjectiles();
-}
 
-void drawLives(Player& p)
-{
 	DrawText(TextFormat(" Lifes: %01i", p.life), (screenWidth / 2) - 500, screenHeightMin + 10, 30, RED);
+
+	DrawText(TextFormat(" Points: %01i", p.point), (screenWidth / 2) + 300, screenHeightMin + 10, 30, RED);
+
+	drawProjectiles();
 }
 
 void unloadPlayer()

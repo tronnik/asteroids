@@ -16,18 +16,19 @@ int screenHeight = 768;
 int screenWidthMin = 0;
 int screenHeightMin = 0;
 
-bool menuOn = true; 
+bool menuOn = true;
 bool controlsOn = false;
 bool creditsOn = false;
 bool exitOn = false;
 bool gameOver = false;
 
 Texture2D background;
+Music menuMusic;
+Music gameplayMusic;
 
 void run()
 {
 	Initialization();
-	SetTargetFPS(60);
 
 	while (!WindowShouldClose())
 	{		
@@ -44,34 +45,29 @@ void Initialization()
 {
 	InitWindow(screenWidth, screenHeight, "asteroids");
 
+	InitAudioDevice();
+
 	initGameplay();
 
 	initMenu();
 }
 
 void update()
-{
+{	
+	if (!menuOn && !gameOver && !creditsOn && !controlsOn)
+		updateGameplay(gameOver);
 	
-	if (!menuOn && !gameOver)
-	{
-		updateGameplay();
-
-		
-	}
-
-	
+	if (gameOver)
+		initGameplay();
 }
 
 void draw()
 {
 	BeginDrawing();
 
-	ClearBackground(BLUE);
-
 	if (menuOn)
 	{
 		drawMenu(menuOn, controlsOn, creditsOn);
-		if (IsKeyPressed(KEY_ENTER)) menuOn = false;
 	}
 	else if (controlsOn)
 	{
@@ -83,19 +79,20 @@ void draw()
 	}
 	else if (gameOver)
 	{
-		//drawGameOver();
+		drawGameOver(menuOn, gameOver);
 	}
 	else
 	{
 		drawGameplay();
 	}
 
-	EndDrawing();
-	
+	EndDrawing();	
 }
 
 void close()
 {
 	UnloadTexture(background);
+	unloadMenu();
+	CloseAudioDevice();
 	CloseWindow();
 }

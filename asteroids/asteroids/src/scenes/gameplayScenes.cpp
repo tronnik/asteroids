@@ -4,18 +4,25 @@
 #include "asteroid.h"
 
 static Texture2D background;
+extern Music gameplayMusic;
 
 void initGameplay()
 {
+	gameplayMusic = LoadMusicStream("res/gameplayMusic.mp3");
+
+	SetMusicVolume(gameplayMusic, 0.5f);
+
+	PlayMusicStream(gameplayMusic);
+
 	initPlayer(player);
 	initAsteroid();
 }
 
-void updateGameplay()
+void updateGameplay(bool& gameOver)
 {
-	updatePlayer(player);
+	updatePlayer(player,gameOver);
 	updateAsteroid();
-	checkAsteroidCollisions();
+	checkAsteroidCollisions(player);
 	checkPlayerCollisions(player);
 }
 
@@ -24,15 +31,16 @@ void drawGameplay()
 	background = LoadTexture("res/background.png");
 	DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
+	UpdateMusicStream(gameplayMusic);
+
 	drawPlayer(player);
 	drawAsteroid();
-
-	drawLives(player);
 }
 
 void unloadGameplay()
 {
-	unloadPlayer();
 	UnloadTexture(background);
+	UnloadMusicStream(gameplayMusic);
+	unloadPlayer();
 	unloadAsteroid();
 }

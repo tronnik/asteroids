@@ -2,7 +2,7 @@
 
 void initGameplay();
 
-void updateGameplay();
+void updateGameplay(bool& gameOver);
 
 void drawGameplay();
 

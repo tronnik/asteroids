@@ -21,16 +21,17 @@ struct Player
     bool isActive;
     int life;
     float respawnTime;
+    int point;
+    int maxPoints;
 };
 
 extern Player player;
 
 void initPlayer(Player& p);
-void updatePlayer(Player& p);
+void updatePlayer(Player& p, bool& gameOver);
 bool checkCollsion(Player p, Asteroid asteroid);
 void checkPlayerCollisions(Player& p);
 void drawPlayer(Player& p);
-void drawLives(Player& p);
 void unloadPlayer();
 
 

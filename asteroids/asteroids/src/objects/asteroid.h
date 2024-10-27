@@ -19,8 +19,8 @@ extern Asteroid asteroids[maxAsteroids];
 void initAsteroid();
 void updateAsteroid();
 bool checkCollsion(Asteroid asteroid, Projectile projectiles);
-void checkAsteroidCollisions();
-void regenerateAsteroid();
+void checkAsteroidCollisions(Player& p);
 void drawAsteroid();
 void unloadAsteroid();
+
 

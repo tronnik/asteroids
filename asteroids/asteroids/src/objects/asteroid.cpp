@@ -47,16 +47,16 @@ void updateAsteroid()
 		asteroids[i].position.x += asteroids[i].speed.x * GetFrameTime();
 		asteroids[i].position.y += asteroids[i].speed.y * GetFrameTime();
 
-		if (asteroids[i].position.x < static_cast<float>(screenWidthMin)) 
+		if (asteroids[i].position.x < static_cast<float>(screenWidthMin))
 			asteroids[i].position.x = static_cast<float>(screenWidth);
 
-		if (asteroids[i].position.x > static_cast<float>(screenWidth)) 
+		if (asteroids[i].position.x > static_cast<float>(screenWidth))
 			asteroids[i].position.x = static_cast<float>(screenWidthMin);
 
-		if (asteroids[i].position.y < static_cast<float>(screenHeightMin)) 
+		if (asteroids[i].position.y < static_cast<float>(screenHeightMin))
 			asteroids[i].position.y = static_cast<float>(screenHeight);
 
-		if (asteroids[i].position.y > static_cast<float>(screenHeight)) 
+		if (asteroids[i].position.y > static_cast<float>(screenHeight))
 			asteroids[i].position.y = static_cast<float>(screenHeightMin);
 	}
 }
@@ -74,7 +74,7 @@ bool checkCollsion(Asteroid asteroid, Projectile projectile)
 	return false;
 }
 
-void checkAsteroidCollisions()
+void checkAsteroidCollisions(Player& p)
 {
 	for (int i = 0; i < maxAsteroids; i++)
 	{
@@ -88,22 +88,10 @@ void checkAsteroidCollisions()
 					{
 						asteroids[i].isActive = false;
 						projectiles[j].isActive = false;
+						p.point += 10;
 					}
 				}
 			}
-		}
-	}
-}
-
-void regenerateAsteroid()
-{
-	for (int i = 0; i < maxAsteroids; i++)
-	{
-		if (!asteroids[i].isActive)  
-		{
-			asteroids[i].position = { static_cast<float>(GetRandomValue(0, screenWidth)), static_cast<float>(GetRandomValue(0, screenHeight)) };
-			asteroids[i].radius = static_cast<float>(GetRandomValue(15, 30));
-			asteroids[i].isActive = true;  
 		}
 	}
 }
@@ -118,7 +106,7 @@ void drawAsteroid()
 		}
 	}
 
-	
+
 }
 
 void unloadAsteroid()

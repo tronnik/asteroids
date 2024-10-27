@@ -31,7 +31,7 @@ void drawButton(Button& b)
 bool isButtonPressed(Button& b)
 {
     return CheckCollisionPointRec(GetMousePosition(),
-        Rectangle{ static_cast<float>(b.posX), static_cast<float>(b.posY), 
+        Rectangle{ static_cast<float>(b.posX), static_cast<float>(b.posY),
         static_cast<float>(b.width), static_cast<float>(b.height) }) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
 }
 
@@ -42,7 +42,7 @@ void drawPlayTitle()
 
 void drawControlTitle()
 {
-    DrawText(TextFormat("CREDITS"), screenWidth / 2 - 70, 460, 30, RED); 
+    DrawText(TextFormat("CREDITS"), screenWidth / 2 - 70, 460, 30, RED);
 }
 
 void drawCreditsTitle()

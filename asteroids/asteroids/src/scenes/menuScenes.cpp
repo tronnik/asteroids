@@ -8,11 +8,19 @@
 #include "buttonsInfo.h"
 
 extern Texture2D background;
+extern Music menuMusic;
 
 void initMenu()
 {
     background = LoadTexture("res/background.png");
-	initButton(button, screenWidth / 2 - 100, 350);
+
+    menuMusic = LoadMusicStream("res/menuMusic.mp3");
+
+    SetMusicVolume(menuMusic, 0.5f);
+
+    PlayMusicStream(menuMusic);
+
+    initButton(button, screenWidth / 2 - 100, 350);
     initButton(controls, screenWidth / 2 - 100, 550);
     initButton(credits, screenWidth / 2 - 100, 450);
     initButton(exit, screenWidth / 2 - 100, 650);
@@ -20,8 +28,10 @@ void initMenu()
 }
 
 void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
-{   
-	DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+{
+    UpdateMusicStream(menuMusic);
+
+    DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
     drawButton(button);
     drawButton(controls);
@@ -32,10 +42,10 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
     drawControlTitle();
     drawCreditsTitle();
     drawExitTitle();
-  
+
     if (isButtonPressed(button))
-        menuOn = false; 
-    
+        menuOn = false;
+
     if (isButtonPressed(controls))
     {
         controlsOn = true;
@@ -47,9 +57,10 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
         creditsOn = true;
         menuOn = false;
     }
-        
+
     if (isButtonPressed(exit))
     {
+        StopMusicStream(menuMusic);
         CloseWindow();
     }
 
@@ -63,15 +74,19 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 
 void drawConstrols(bool& menuOn, bool& controlsOn)
 {
-    DrawText("CONTROLS", screenWidth / 2 - 100, 100, 40, BLACK);
+    DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
-    DrawText("Left Click: ", screenWidth / 2 - 220, 250, 30, BLACK);
+    UpdateMusicStream(menuMusic);
 
-    DrawText("Shoot", screenWidth / 2 + 100, 250, 30, BLACK);
+    DrawText("CONTROLS", screenWidth / 2 - 100, 100, 40, WHITE);
 
-    DrawText("Right Click: ", screenWidth / 2 - 220, 350, 30, BLACK);
+    DrawText("Left Click: ", screenWidth / 2 - 220, 250, 30, WHITE);
 
-    DrawText("Move", screenWidth / 2 + 100, 350, 30, BLACK);
+    DrawText("Shoot", screenWidth / 2 + 100, 250, 30, WHITE);
+
+    DrawText("Right Click: ", screenWidth / 2 - 220, 350, 30, WHITE);
+
+    DrawText("Move", screenWidth / 2 + 100, 350, 30, WHITE);
 
     drawBackToMenu(menuOn, controlsOn);
 
@@ -79,7 +94,32 @@ void drawConstrols(bool& menuOn, bool& controlsOn)
 
 void drawCredits(bool& menuOn, bool& creditsOn)
 {
-    DrawText(TextFormat("CREDITS"), screenWidth / 2 - 40, 100, 30, RED);
+    DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+
+    UpdateMusicStream(menuMusic);
+
+    DrawText(TextFormat("CREDITS"), screenWidth / 2 - 60, 50, 30, WHITE);
+
+    DrawText("Developer: ", screenWidth / 2 - 250, 150, 30, WHITE);
+
+    DrawText("Valentin Villar", screenWidth / 2 + 50, 150, 30, WHITE);
+    DrawText("Tronik in ITCH.IO ", screenWidth / 2 + 50, 180, 30, WHITE);
+
+    DrawText("Background By: ", screenWidth / 2 - 250, 250, 30, WHITE);
+
+    DrawText("Ansimuz in ITCH.IO", screenWidth / 2 + 50, 250, 30, WHITE);
+
+    DrawText("Spaceship By: ", screenWidth / 2 - 250, 350, 30, WHITE);
+
+    DrawText("Pixel By Pixel in ITCH.IO", screenWidth / 2 + 50, 350, 30, WHITE);
+
+    DrawText("Bullets By: ", screenWidth / 2 - 250, 450, 30, WHITE);
+
+    DrawText("Ho88it in ITCH.IO", screenWidth / 2 + 50 , 450, 30, WHITE);
+
+    DrawText("Library: ", screenWidth / 2 - 250, 550, 30, WHITE);
+
+    DrawText("Raylib", screenWidth / 2 + 50, 550, 30, WHITE);
 
     drawBackToMenu(menuOn, creditsOn);
 
@@ -98,7 +138,19 @@ void drawBackToMenu(bool& boolTrue, bool& boolFalse)
     }
 }
 
-//void drawGameOver()
-//{
-//	
-//}
+void drawGameOver(bool& menuOn, bool& gameOver)
+{
+    DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+
+    UpdateMusicStream(menuMusic);
+
+    DrawText(TextFormat("Game Over"), screenWidth / 2 - 60, screenHeightMin + 50, 30, WHITE);
+
+    drawBackToMenu(menuOn, gameOver);
+}
+
+void unloadMenu()
+{
+    UnloadTexture(background);
+    UnloadMusicStream(menuMusic);  
+}
