@@ -15,15 +15,19 @@ void initGameplay()
 	PlayMusicStream(gameplayMusic);
 
 	initPlayer(player);
+
 	initAsteroid();
+
+	initProjectiles();
 }
 
 void updateGameplay(bool& gameOver)
 {
 	updatePlayer(player,gameOver);
+	checkPlayerCollisions(player);
+
 	updateAsteroid();
 	checkAsteroidCollisions(player);
-	checkPlayerCollisions(player);
 }
 
 void drawGameplay()
@@ -34,13 +38,17 @@ void drawGameplay()
 	UpdateMusicStream(gameplayMusic);
 
 	drawPlayer(player);
+
 	drawAsteroid();
 }
 
 void unloadGameplay()
 {
 	UnloadTexture(background);
+
 	UnloadMusicStream(gameplayMusic);
+
 	unloadPlayer();
+
 	unloadAsteroid();
 }

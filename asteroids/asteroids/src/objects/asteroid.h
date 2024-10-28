@@ -1,8 +1,8 @@
 #pragma once
 
 #include "raylib.h"
-
 #include "projectile.h"
+#include <vector>
 
 struct Asteroid
 {
@@ -14,13 +14,17 @@ struct Asteroid
 };
 
 const int maxAsteroids = 20;
-extern Asteroid asteroids[maxAsteroids];
+extern std::vector<Asteroid> asteroids;
+
+extern Sound explosionSfx;
+extern Sound pointsSfx;
 
 void initAsteroid();
 void updateAsteroid();
-bool checkCollsion(Asteroid asteroid, Projectile projectiles);
+bool checkCollision(Asteroid asteroid, Projectile projectile);
 void checkAsteroidCollisions(Player& p);
 void drawAsteroid();
 void unloadAsteroid();
+
 
 

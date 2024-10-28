@@ -6,15 +6,15 @@
 #include "projectile.h"
 #include "asteroid.h"
 
-
 const float DECELERATION_RATE = 400.0f;
 const float ACCELERATION_RATE = 1000.0f;
 
 Player player;
+
 static Texture2D spaceShip;
 
-bool isShooting = false;
-
+Sound loseSfx;
+Sound boostSfx;
 
 void initPlayer(Player& p)
 {
@@ -23,10 +23,6 @@ void initPlayer(Player& p)
 	p.speed = { 0.0f, 0.0f };
 	p.acceleration = { 0.0f, 0.0f };
 	p.maxSpeed = 600.0f;
-
-	p.mousePosition = { 0.0f, 0.0f };
-	p.direction = { 0.0f, 0.0f };
-	p.directionNormalized = { 0.0f, 0.0f };
 
 	p.radius = 20.0f;
 	p.angle = 0.0f;
@@ -40,6 +36,10 @@ void initPlayer(Player& p)
 	p.point = 0;
 
 	spaceShip = LoadTexture("res/spaceShip.png");
+
+	loseSfx = LoadSound("res/loseSfx.mp3");
+
+	boostSfx = LoadSound("res/boostSfx.mp3");
 }
 
 void updatePlayer(Player& p, bool& gameOver)
@@ -59,6 +59,9 @@ void updatePlayer(Player& p, bool& gameOver)
 		{
 			p.acceleration.x = p.directionNormalized.x * ACCELERATION_RATE;
 			p.acceleration.y = p.directionNormalized.y * ACCELERATION_RATE;
+
+			SetSoundVolume(boostSfx, 0.3f);
+			PlaySound(boostSfx);
 		}
 		else
 		{
@@ -78,13 +81,17 @@ void updatePlayer(Player& p, bool& gameOver)
 		p.speed.y = speedNormalized.y * p.maxSpeed;
 	}
 
-	if (p.position.x < static_cast<float>(screenWidthMin)) p.position.x = static_cast<float>(screenWidth);
+	if (p.position.x < static_cast<float>(screenWidthMin)) 
+		p.position.x = static_cast<float>(screenWidth);
 
-	if (p.position.x > static_cast<float>(screenWidth)) p.position.x = static_cast<float>(screenWidthMin);
+	if (p.position.x > static_cast<float>(screenWidth)) 
+		p.position.x = static_cast<float>(screenWidthMin);
 
-	if (p.position.y < static_cast<float>(screenHeightMin)) p.position.y = static_cast<float>(screenHeight);
+	if (p.position.y < static_cast<float>(screenHeightMin)) 
+		p.position.y = static_cast<float>(screenHeight);
 
-	if (p.position.y > static_cast<float>(screenHeight)) p.position.y = static_cast<float>(screenHeightMin);
+	if (p.position.y > static_cast<float>(screenHeight)) 
+		p.position.y = static_cast<float>(screenHeightMin);
 
 	p.position.x += p.speed.x * GetFrameTime();
 	p.position.y += p.speed.y * GetFrameTime();
@@ -96,7 +103,6 @@ void updatePlayer(Player& p, bool& gameOver)
 
 	if (p.life == 0)
 		gameOver = true;
-	
 }
 
 bool checkCollsion(Player p, Asteroid asteroid)
@@ -125,9 +131,10 @@ void checkPlayerCollisions(Player& p)
 				p.life--;
 
 				if (p.life > 0)
-				{
 					p.respawnTime = 1.0f;
-				}
+				
+				SetSoundVolume(loseSfx, 0.3f);
+				PlaySound(loseSfx);
 			}
 		}
 	}

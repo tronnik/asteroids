@@ -17,7 +17,9 @@ struct Projectile
 
 extern Projectile projectiles[maxProjectiles];
 extern int projectileCount;
+extern Sound shootSfx;
 
+void initProjectiles();
 void fire(Player& p);
 void updateProjectiles();
 void drawProjectiles();

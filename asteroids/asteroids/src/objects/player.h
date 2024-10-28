@@ -22,10 +22,12 @@ struct Player
     int life;
     float respawnTime;
     int point;
-    int maxPoints;
+    int lastPoints;
 };
 
 extern Player player;
+extern Sound loseSfx;
+extern Sound boostSfx;
 
 void initPlayer(Player& p);
 void updatePlayer(Player& p, bool& gameOver);

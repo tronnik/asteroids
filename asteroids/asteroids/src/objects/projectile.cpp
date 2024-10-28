@@ -7,9 +7,18 @@ Projectile projectiles[maxProjectiles];
  int projectileCount = 0;
 
 static Texture2D ammoShoot;
+Sound shootSfx;
+
+void initProjectiles()
+{
+    ammoShoot = LoadTexture("res/shoot.png");
+    shootSfx = LoadSound("res/shootSfx.mp3");
+}
 
 void fire(Player& p)
 {
+    SetSoundVolume(shootSfx, 0.3f);
+
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && projectileCount < maxProjectiles)
     {
         projectiles[projectileCount].position = p.position;
@@ -19,7 +28,7 @@ void fire(Player& p)
 
         projectileCount++;
 
-        ammoShoot = LoadTexture("res/shoot.png");
+        PlaySound(shootSfx);
     }
 }
 

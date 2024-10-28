@@ -1,8 +1,9 @@
-﻿  game.cpp
+﻿  asteroid.cpp
+  player.cpp
   Generando código
-  3 of 43 functions ( 7.0%) were compiled, the rest were copied from previous compilation.
+  3 of 122 functions ( 2.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    2 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
 raylib.lib(raudio.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(raudio.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(rcore.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(rcore.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
