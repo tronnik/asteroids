@@ -8,7 +8,9 @@ Button button;
 Button controls;
 Button credits;
 Button backToMenu;
-Button exit;
+Button exitGame;
+Button pauseGame;
+Button resumeGame;
 
 void initButton(Button& b, int xPos, int yPos)
 {
@@ -58,6 +60,16 @@ void drawExitTitle()
 void drawBackToMenuTitle()
 {
     DrawText(TextFormat("MENU"), screenWidth / 2 - 40, 660, 30, RED);
+}
+
+void drawPauseButtonTitle()
+{
+    DrawText(TextFormat("PAUSE"), screenWidth - 200, screenHeight - 90, 30, RED);
+}
+
+void drawResumeGameTitle()
+{
+    DrawText(TextFormat("RESUME"), screenWidth / 2 - 70, 460, 30, RED);
 }
 
 

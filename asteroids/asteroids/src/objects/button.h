@@ -14,7 +14,9 @@ extern Button button;
 extern Button controls;
 extern Button credits;
 extern Button backToMenu;
-extern Button exit;
+extern Button exitGame;
+extern Button pauseGame;
+extern Button resumeGame;
 
 void initButton(Button& b, int xPos, int yPos);
 void drawButton(Button& b);
@@ -25,3 +27,5 @@ void drawControlTitle();
 void drawCreditsTitle();
 void drawExitTitle();
 void drawBackToMenuTitle();
+void drawPauseButtonTitle();
+void drawResumeGameTitle();

@@ -62,3 +62,9 @@ void drawProjectiles()
     }
 }
 
+void unloadProjectiles()
+{
+    UnloadTexture(ammoShoot);
+    UnloadSound(shootSfx);
+}
+

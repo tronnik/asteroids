@@ -127,6 +127,8 @@ void drawAsteroid()
                     newAsteroid.isActive = true;
             
                     asteroids.push_back(newAsteroid);  
+
+
                 }
             }
         }       
@@ -136,4 +138,6 @@ void drawAsteroid()
 void unloadAsteroid()
 {
     UnloadTexture(enemy);
+    UnloadSound(pointsSfx);
+    UnloadSound(explosionSfx);
 }

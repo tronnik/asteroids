@@ -23,7 +23,6 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\objects\asteroid.cpp" />
     <ClCompile Include="src\objects\button.cpp" />
-    <ClCompile Include="src\objects\buttonsInfo.cpp" />
     <ClCompile Include="src\objects\player.cpp" />
     <ClCompile Include="src\objects\projectile.cpp" />
     <ClCompile Include="src\scenes\gameplayScenes.cpp" />
@@ -33,7 +32,6 @@
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\objects\asteroid.h" />
     <ClInclude Include="src\objects\button.h" />
-    <ClInclude Include="src\objects\buttonsInfo.h" />
     <ClInclude Include="src\objects\player.h" />
     <ClInclude Include="src\objects\projectile.h" />
     <ClInclude Include="src\objects\utils.h" />

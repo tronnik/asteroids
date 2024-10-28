@@ -178,4 +178,6 @@ void drawPlayer(Player& p)
 void unloadPlayer()
 {
 	UnloadTexture(spaceShip);
+	UnloadSound(loseSfx);
+	UnloadSound(boostSfx);
 }

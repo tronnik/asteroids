@@ -2,10 +2,9 @@
 
 #include "raylib.h"
 
-#include "gameplayScenes.h"
 #include "button.h"
 #include "utils.h"
-#include "buttonsInfo.h"
+#include "gameplayScenes.h"
 
 extern Texture2D background;
 extern Music menuMusic;
@@ -23,8 +22,9 @@ void initMenu()
     initButton(button, screenWidth / 2 - 100, 350);
     initButton(controls, screenWidth / 2 - 100, 550);
     initButton(credits, screenWidth / 2 - 100, 450);
-    initButton(exit, screenWidth / 2 - 100, 650);
+    initButton(exitGame, screenWidth / 2 - 100, 650);
     initButton(backToMenu, screenWidth / 2 - 100, 650);
+    initButton(resumeGame, screenWidth / 2 - 100, 450);
 }
 
 void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
@@ -36,7 +36,7 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
     drawButton(button);
     drawButton(controls);
     drawButton(credits);
-    drawButton(exit);
+    drawButton(exitGame);
 
     drawPlayTitle();
     drawControlTitle();
@@ -44,8 +44,12 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
     drawExitTitle();
 
     if (isButtonPressed(button))
+    {
         menuOn = false;
-
+        
+        resetGame();
+    }
+   
     if (isButtonPressed(controls))
     {
         controlsOn = true;
@@ -58,7 +62,7 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
         menuOn = false;
     }
 
-    if (isButtonPressed(exit))
+    if (isButtonPressed(exitGame))
     {
         StopMusicStream(menuMusic);
         CloseWindow();
@@ -138,13 +142,30 @@ void drawBackToMenu(bool& boolTrue, bool& boolFalse)
     }
 }
 
+void drawPause(bool& menuOn, bool& pauseOn)
+{
+    DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+
+    UpdateMusicStream(menuMusic);
+
+    DrawText(TextFormat("Pause game"), screenWidth / 2 - 100, screenHeightMin + 50, 30, WHITE);
+
+    drawButton(resumeGame);
+    drawResumeGameTitle();
+
+    if (isButtonPressed(resumeGame))
+        pauseOn = false;
+
+    drawBackToMenu(menuOn, pauseOn);
+}
+
 void drawGameOver(bool& menuOn, bool& gameOver)
 {
     DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
     UpdateMusicStream(menuMusic);
 
-    DrawText(TextFormat("Game Over"), screenWidth / 2 - 60, screenHeightMin + 50, 30, WHITE);
+    DrawText(TextFormat("Game Over"), screenWidth / 2 - 100, screenHeightMin + 50, 30, WHITE);
 
     drawBackToMenu(menuOn, gameOver);
 }

@@ -23,6 +23,7 @@ void initProjectiles();
 void fire(Player& p);
 void updateProjectiles();
 void drawProjectiles();
+void unloadProjectiles();
 
 
 

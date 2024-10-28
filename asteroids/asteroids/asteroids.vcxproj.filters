@@ -57,9 +57,6 @@
     <ClCompile Include="src\objects\asteroid.cpp">
       <Filter>Archivos de origen\object</Filter>
     </ClCompile>
-    <ClCompile Include="src\objects\buttonsInfo.cpp">
-      <Filter>Archivos de origen\object</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\scenes\gameplayScenes.h">
@@ -78,9 +75,6 @@
       <Filter>Archivos de encabezado\objects</Filter>
     </ClInclude>
     <ClInclude Include="src\objects\button.h">
-      <Filter>Archivos de encabezado\objects</Filter>
-    </ClInclude>
-    <ClInclude Include="src\objects\buttonsInfo.h">
       <Filter>Archivos de encabezado\objects</Filter>
     </ClInclude>
     <ClInclude Include="src\objects\player.h">

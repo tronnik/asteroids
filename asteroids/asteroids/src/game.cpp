@@ -9,6 +9,7 @@
 static void Initialization();
 static void update();
 static void draw();
+static void unloadGame();
 static void close();
 
 int screenWidth = 1024;
@@ -21,6 +22,7 @@ bool controlsOn = false;
 bool creditsOn = false;
 bool exitOn = false;
 bool gameOver = false;
+bool pauseOn = false;
 
 Texture2D background;
 Music menuMusic;
@@ -36,7 +38,7 @@ void run()
 		draw();
 	}
 
-	unloadGameplay();
+	unloadGame();
 
 	close();
 }
@@ -54,7 +56,7 @@ void Initialization()
 
 void update()
 {	
-	if (!menuOn && !gameOver && !creditsOn && !controlsOn)
+	if (!menuOn && !gameOver && !creditsOn && !controlsOn && !pauseOn)
 		updateGameplay(gameOver);
 	
 	if (gameOver)
@@ -81,18 +83,27 @@ void draw()
 	{
 		drawGameOver(menuOn, gameOver);
 	}
+	else if (pauseOn)
+	{
+		drawPause(menuOn, pauseOn);
+	}
 	else
 	{
-		drawGameplay();
+		drawGameplay(menuOn, pauseOn);
 	}
 
 	EndDrawing();	
 }
 
-void close()
+void unloadGame()
 {
 	UnloadTexture(background);
 	unloadMenu();
+	unloadGameplay();
+}
+
+void close()
+{
 	CloseAudioDevice();
 	CloseWindow();
 }

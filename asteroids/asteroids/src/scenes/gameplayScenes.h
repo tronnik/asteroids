@@ -4,7 +4,9 @@ void initGameplay();
 
 void updateGameplay(bool& gameOver);
 
-void drawGameplay();
+void drawGameplay(bool& menuOn, bool& pauseOn);
+
+void resetGame();
 
 void unloadGameplay();
 

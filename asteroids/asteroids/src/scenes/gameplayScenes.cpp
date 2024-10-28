@@ -2,6 +2,9 @@
 
 #include "player.h"
 #include "asteroid.h"
+#include "button.h"
+#include "utils.h"
+#include "projectile.h"
 
 static Texture2D background;
 extern Music gameplayMusic;
@@ -19,6 +22,8 @@ void initGameplay()
 	initAsteroid();
 
 	initProjectiles();
+
+	initButton(pauseGame, screenWidth - 250, screenHeight - 100);
 }
 
 void updateGameplay(bool& gameOver)
@@ -30,7 +35,7 @@ void updateGameplay(bool& gameOver)
 	checkAsteroidCollisions(player);
 }
 
-void drawGameplay()
+void drawGameplay(bool& menuOn, bool& pauseOn)
 {
 	background = LoadTexture("res/background.png");
 	DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
@@ -40,6 +45,25 @@ void drawGameplay()
 	drawPlayer(player);
 
 	drawAsteroid();
+
+	drawButton(pauseGame);
+
+	drawPauseButtonTitle();
+
+	if (isButtonPressed(pauseGame))
+	{
+		pauseOn = true;
+		menuOn = false;
+	}
+}
+
+void resetGame()
+{
+	initPlayer(player);
+
+	initAsteroid();
+
+	projectileCount = 0;
 }
 
 void unloadGameplay()
@@ -51,4 +75,6 @@ void unloadGameplay()
 	unloadPlayer();
 
 	unloadAsteroid();
+
+	unloadProjectiles();
 }
