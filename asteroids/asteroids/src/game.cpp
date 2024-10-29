@@ -7,6 +7,7 @@
 #include "menuScenes.h"
 
 static void Initialization();
+static void loadGame();
 static void update();
 static void draw();
 static void unloadGame();
@@ -25,7 +26,6 @@ bool exitOn = false;
 bool gameOver = false;
 bool pauseOn = false;
 
-
 Texture2D background;
 Music menuMusic;
 Music gameplayMusic;
@@ -34,8 +34,10 @@ void run()
 {
 	Initialization();
 
+	loadGame();
+
 	while (!WindowShouldClose())
-	{		
+	{
 		update();
 		draw();
 	}
@@ -56,13 +58,15 @@ void Initialization()
 	initMenu();
 }
 
+void loadGame()
+{
+	loadGameplay();
+}
+
 void update()
-{	
+{
 	if (!menuOn && !gameOver && !creditsOn && !creditsOn2 && !controlsOn && !pauseOn)
 		updateGameplay(gameOver);
-	
-	if (gameOver)
-		initGameplay();
 }
 
 void draw()
@@ -98,7 +102,7 @@ void draw()
 		drawGameplay(menuOn, pauseOn);
 	}
 
-	EndDrawing();	
+	EndDrawing();
 }
 
 void unloadGame()

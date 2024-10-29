@@ -28,7 +28,7 @@ void initMenu()
     initButton(playAgain, screenWidth / 2 - 200, 700);
 
     initPageButton(page1, screenWidth / 2 - 150, 700);
-    initPageButton(page2, screenWidth / 2 - 50 , 700);
+    initPageButton(page2, screenWidth / 2 - 50, 700);
 }
 
 void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
@@ -36,6 +36,8 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
     UpdateMusicStream(menuMusic);
 
     DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+
+    DrawText(TextFormat("ASTEROIDS"), screenWidth / 2 - 250, 150, 100, RED);
 
     drawButton(button);
     drawButton(controls);
@@ -50,10 +52,10 @@ void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
     if (isButtonPressed(button))
     {
         menuOn = false;
-        
+
         resetGame();
     }
-   
+
     if (isButtonPressed(controls))
     {
         controlsOn = true;
@@ -123,13 +125,13 @@ void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 
     DrawText("Bullets By: ", screenWidth / 2 - 250, 450, 30, WHITE);
 
-    DrawText("Ho88it in ITCH.IO", screenWidth / 2 + 50 , 450, 30, WHITE);
+    DrawText("Ho88it in ITCH.IO", screenWidth / 2 + 50, 450, 30, WHITE);
 
     DrawText("Library: ", screenWidth / 2 - 250, 550, 30, WHITE);
 
     DrawText("Raylib", screenWidth / 2 + 50, 550, 30, WHITE);
 
-    drawPageButton( creditsOn,  creditsOn2);
+    drawPageButton(creditsOn, creditsOn2);
 
     drawBackToMenu(menuOn, creditsOn);
 
@@ -150,27 +152,27 @@ void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 
     DrawText("Points SFX By: ", screenWidth / 2 - 250, 250, 30, WHITE);
 
-    DrawText("", screenWidth / 2 + 50, 250, 30, WHITE);
+    DrawText("Zapslat", screenWidth / 2 + 50, 250, 30, WHITE);
 
     DrawText("Explosion SFX By: ", screenWidth / 2 - 250, 350, 30, WHITE);
 
-    DrawText("", screenWidth / 2 + 50, 350, 30, WHITE);
+    DrawText("Zapslat", screenWidth / 2 + 50, 350, 30, WHITE);
 
     DrawText("lose SFX By: ", screenWidth / 2 - 250, 450, 30, WHITE);
 
-    DrawText("", screenWidth / 2 + 50, 450, 30, WHITE);
+    DrawText("Zapslat", screenWidth / 2 + 50, 450, 30, WHITE);
 
     DrawText("Boost SFX by: ", screenWidth / 2 - 250, 550, 30, WHITE);
 
-    DrawText("", screenWidth / 2 + 50, 550, 30, WHITE);
+    DrawText("Zapslat", screenWidth / 2 + 50, 550, 30, WHITE);
 
     DrawText("Shoot SFX by: ", screenWidth / 2 - 250, 650, 30, WHITE);
 
-    DrawText("", screenWidth / 2 + 50, 650, 30, WHITE);
+    DrawText("Zapslat", screenWidth / 2 + 50, 650, 30, WHITE);
 
     drawPageButton(creditsOn, creditsOn2);
 
-    drawBackToMenu(menuOn, creditsOn);
+    drawBackToMenu(menuOn, creditsOn2);
 }
 
 void drawBackToMenu(bool& boolTrue, bool& boolFalse)
@@ -241,7 +243,7 @@ void drawGameOver(bool& menuOn, bool& gameOver)
 
     if (isButtonPressed(playAgain))
         gameOver = false;
-        resetGame();
+    resetGame();
 
     drawBackToMenu(menuOn, gameOver);
 }
@@ -249,5 +251,5 @@ void drawGameOver(bool& menuOn, bool& gameOver)
 void unloadMenu()
 {
     UnloadTexture(background);
-    UnloadMusicStream(menuMusic);  
+    UnloadMusicStream(menuMusic);
 }

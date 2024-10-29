@@ -34,7 +34,10 @@ void initPlayer(Player& p)
 	p.respawnTime = 1.0f;
 
 	p.point = 0;
+}
 
+void loadPlayer()
+{
 	spaceShip = LoadTexture("res/spaceShip.png");
 
 	loseSfx = LoadSound("res/loseSfx.mp3");
@@ -81,16 +84,16 @@ void updatePlayer(Player& p, bool& gameOver)
 		p.speed.y = speedNormalized.y * p.maxSpeed;
 	}
 
-	if (p.position.x < static_cast<float>(screenWidthMin)) 
+	if (p.position.x < static_cast<float>(screenWidthMin))
 		p.position.x = static_cast<float>(screenWidth);
 
-	if (p.position.x > static_cast<float>(screenWidth)) 
+	if (p.position.x > static_cast<float>(screenWidth))
 		p.position.x = static_cast<float>(screenWidthMin);
 
-	if (p.position.y < static_cast<float>(screenHeightMin)) 
+	if (p.position.y < static_cast<float>(screenHeightMin))
 		p.position.y = static_cast<float>(screenHeight);
 
-	if (p.position.y > static_cast<float>(screenHeight)) 
+	if (p.position.y > static_cast<float>(screenHeight))
 		p.position.y = static_cast<float>(screenHeightMin);
 
 	p.position.x += p.speed.x * GetFrameTime();
@@ -98,18 +101,19 @@ void updatePlayer(Player& p, bool& gameOver)
 
 	if (p.isActive)
 		fire(p);
-	
+
 	updateProjectiles();
 
 	if (p.life == 0)
 		gameOver = true;
+
 }
 
 bool checkCollsion(Player p, Asteroid asteroid)
 {
 	float distX = asteroid.position.x - p.position.x;
 	float distY = asteroid.position.y - p.position.y;
-	float distance = sqrtf((distX * distX) + (distY * distY)); 
+	float distance = sqrtf((distX * distX) + (distY * distY));
 
 	if (distance <= asteroid.radius + p.radius)
 	{
@@ -132,7 +136,7 @@ void checkPlayerCollisions(Player& p)
 
 				if (p.life > 0)
 					p.respawnTime = 1.0f;
-				
+
 				SetSoundVolume(loseSfx, 0.3f);
 				PlaySound(loseSfx);
 			}
@@ -159,11 +163,11 @@ void drawPlayer(Player& p)
 	{
 		Rectangle source = { 0.0f, 0.0f, static_cast<float>(spaceShip.width), static_cast<float>(spaceShip.height) };
 
-		Rectangle dest = { p.position.x, p.position.y, p.radius * 2.0f, p.radius * 2.0f };  
+		Rectangle dest = { p.position.x, p.position.y, p.radius * 2.0f, p.radius * 2.0f };
 
-		Vector2 origin = { (p.radius), (p.radius) };  
+		Vector2 origin = { (p.radius), (p.radius) };
 
-		float rotation = p.angle + 90.0f;  
+		float rotation = p.angle + 90.0f;
 
 		DrawTexturePro(spaceShip, source, dest, origin, rotation, WHITE);
 	}

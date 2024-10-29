@@ -30,6 +30,7 @@ extern Sound loseSfx;
 extern Sound boostSfx;
 
 void initPlayer(Player& p);
+void loadPlayer();
 void updatePlayer(Player& p, bool& gameOver);
 bool checkCollsion(Player p, Asteroid asteroid);
 void checkPlayerCollisions(Player& p);

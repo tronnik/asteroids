@@ -4,7 +4,7 @@
 
 Projectile projectiles[maxProjectiles];
 
- int projectileCount = 0;
+int projectileCount = 0;
 
 static Texture2D ammoShoot;
 Sound shootSfx;

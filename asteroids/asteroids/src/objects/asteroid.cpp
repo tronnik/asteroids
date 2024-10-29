@@ -1,5 +1,7 @@
 #include "asteroid.h"
+
 #include <iostream>
+
 #include "utils.h"
 #include <cmath>
 
@@ -7,13 +9,15 @@ using namespace std;
 
 Texture2D enemy;
 Texture2D miniEnemy;
-std::vector<Asteroid> asteroids; 
+
+std::vector<Asteroid> asteroids;
+
 Sound explosionSfx;
 Sound pointsSfx;
 
 void initAsteroid()
 {
-    asteroids.resize(maxAsteroids);  
+    asteroids.resize(maxAsteroids);
 
     for (int i = 0; i < maxAsteroids; i++)
     {
@@ -39,14 +43,17 @@ void initAsteroid()
         asteroids[i].direction = { asteroids[i].speed.x, asteroids[i].speed.y };
         asteroids[i].radius = 50.0f + static_cast<float>(rand() % 20);
         asteroids[i].isActive = true;
-
-        enemy = LoadTexture("res/asteroid-1.png");
-        miniEnemy = LoadTexture("res/asteroid-2.png");
-
-        shootSfx = LoadSound("res/shootSfx.mp3");
-        explosionSfx = LoadSound("res/explosionSfx.mp3");
-        pointsSfx = LoadSound("res/pointsSfx.mp3");
     }
+}
+
+void loadAsteroid()
+{
+    enemy = LoadTexture("res/asteroid-1.png");
+    miniEnemy = LoadTexture("res/asteroid-2.png");
+
+    shootSfx = LoadSound("res/shootSfx.mp3");
+    explosionSfx = LoadSound("res/explosionSfx.mp3");
+    pointsSfx = LoadSound("res/pointsSfx.mp3");
 }
 
 void updateAsteroid()
@@ -104,7 +111,7 @@ void checkAsteroidCollisions(Player& p)
                 }
             }
         }
-    } 
+    }
 }
 
 void drawAsteroid()
@@ -120,19 +127,30 @@ void drawAsteroid()
                 if (checkCollision(asteroids[i], projectiles[j]))
                 {
                     asteroids[i].isActive = false;
-            
-                    Asteroid newAsteroid;
-                    newAsteroid.position = { static_cast<float>(GetRandomValue(0, screenWidth), GetRandomValue(0, screenHeight)) };
-                    newAsteroid.direction = { static_cast<float>(GetRandomValue(-1, 1), GetRandomValue(-1, 1)) }; 
-                    newAsteroid.isActive = true;
-            
-                    asteroids.push_back(newAsteroid);  
 
 
+                    createNewASteroids();
                 }
             }
-        }       
+        }
     }
+}
+
+void createNewASteroids()
+{
+    Asteroid newAsteroid;
+    newAsteroid.position = { static_cast<float>(GetRandomValue(0, screenWidth), GetRandomValue(0, screenHeight)) };
+    newAsteroid.direction = { static_cast<float>(GetRandomValue(-1, 1), GetRandomValue(-1, 1)) };
+    newAsteroid.isActive = true;
+
+    asteroids.push_back(newAsteroid);
+
+    //Asteroid newAsteroid2;
+    //newAsteroid2.position = { static_cast<float>(GetRandomValue(0, screenWidth), GetRandomValue(0, screenHeight)) };
+    //newAsteroid2.direction = { static_cast<float>(GetRandomValue(-1, 1), GetRandomValue(-1, 1)) };
+    //newAsteroid2.isActive = true;
+    //
+    //asteroids.push_back(newAsteroid2);
 }
 
 void unloadAsteroid()

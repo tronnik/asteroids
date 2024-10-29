@@ -2,6 +2,8 @@
 
 void initGameplay();
 
+void loadGameplay();
+
 void updateGameplay(bool& gameOver);
 
 void drawGameplay(bool& menuOn, bool& pauseOn);

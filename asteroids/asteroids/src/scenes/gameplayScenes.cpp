@@ -26,9 +26,15 @@ void initGameplay()
 	initButton(pauseGame, screenWidth - 250, screenHeight - 100);
 }
 
+void loadGameplay()
+{
+	loadPlayer();
+	loadAsteroid();
+}
+
 void updateGameplay(bool& gameOver)
 {
-	updatePlayer(player,gameOver);
+	updatePlayer(player, gameOver);
 	checkPlayerCollisions(player);
 
 	updateAsteroid();
