@@ -20,9 +20,11 @@ int screenHeightMin = 0;
 bool menuOn = true;
 bool controlsOn = false;
 bool creditsOn = false;
+bool creditsOn2 = false;
 bool exitOn = false;
 bool gameOver = false;
 bool pauseOn = false;
+
 
 Texture2D background;
 Music menuMusic;
@@ -56,7 +58,7 @@ void Initialization()
 
 void update()
 {	
-	if (!menuOn && !gameOver && !creditsOn && !controlsOn && !pauseOn)
+	if (!menuOn && !gameOver && !creditsOn && !creditsOn2 && !controlsOn && !pauseOn)
 		updateGameplay(gameOver);
 	
 	if (gameOver)
@@ -77,7 +79,11 @@ void draw()
 	}
 	else if (creditsOn)
 	{
-		drawCredits(menuOn, creditsOn);
+		drawCredits(menuOn, creditsOn, creditsOn2);
+	}
+	else if (creditsOn2)
+	{
+		drawSecondCredits(menuOn, creditsOn, creditsOn2);
 	}
 	else if (gameOver)
 	{

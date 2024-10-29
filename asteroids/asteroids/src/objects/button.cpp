@@ -11,6 +11,9 @@ Button backToMenu;
 Button exitGame;
 Button pauseGame;
 Button resumeGame;
+Button playAgain;
+Button page1;
+Button page2;
 
 void initButton(Button& b, int xPos, int yPos)
 {
@@ -18,7 +21,14 @@ void initButton(Button& b, int xPos, int yPos)
     b.posY = yPos;
     b.width = 200;
     b.height = 50;
-    b.isPressed = false;
+}
+
+void initPageButton(Button& b, int xPos, int yPos)
+{
+    b.posX = xPos;
+    b.posY = yPos;
+    b.width = 50;
+    b.height = 50;
 }
 
 void drawButton(Button& b)
@@ -59,7 +69,7 @@ void drawExitTitle()
 
 void drawBackToMenuTitle()
 {
-    DrawText(TextFormat("MENU"), screenWidth / 2 - 40, 660, 30, RED);
+    DrawText(TextFormat("MENU"), screenWidth / 2 + 110, 710, 30, RED);
 }
 
 void drawPauseButtonTitle()
@@ -69,7 +79,22 @@ void drawPauseButtonTitle()
 
 void drawResumeGameTitle()
 {
-    DrawText(TextFormat("RESUME"), screenWidth / 2 - 70, 460, 30, RED);
+    DrawText(TextFormat("RESUME"), screenWidth / 2 - 160, 710, 30, RED);
+}
+
+void drawPlayAgainTitle()
+{
+    DrawText(TextFormat("PLAY AGAIN"), screenWidth / 2 - 190, 710, 30, RED);
+}
+
+void drawPage1Title()
+{
+    DrawText(TextFormat("1"), screenWidth / 2 - 130, 710, 30, RED);
+}
+
+void drawPage2Title()
+{
+    DrawText(TextFormat("2"), screenWidth / 2 - 30, 710, 30, RED);
 }
 
 
