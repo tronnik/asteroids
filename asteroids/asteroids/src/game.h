@@ -1,3 +1,6 @@
 #pragma once
 
-void run();
+namespace asteroids
+{
+	void run();
+}

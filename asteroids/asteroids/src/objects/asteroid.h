@@ -5,28 +5,37 @@
 #include "projectile.h"
 #include <vector>
 
-struct Asteroid
+namespace asteroids
 {
-    Vector2 position;
-    Vector2 speed;
-    Vector2 direction;
-    float radius;
-    bool isActive;
-};
+    enum class AsteroidSize
+    {
+        LARGE,
+        MEDIUM,
+        SMALL
+    };
 
-const int maxAsteroids = 10;
-extern std::vector<Asteroid> asteroids;
+    struct Asteroid
+    {
+        Vector2 position;
+        Vector2 speed;
+        Vector2 direction;
+        float radius;
+        bool isActive;
+        AsteroidSize size;
+    };
 
-extern Sound explosionSfx;
-extern Sound pointsSfx;
+    const int maxAsteroids = 20;
+    extern std::vector<Asteroid> asteroids;
 
-void initAsteroid();
-void loadAsteroid();
-void updateAsteroid();
-bool checkCollision(Asteroid asteroid, Projectile projectile);
-void checkAsteroidCollisions(Player& p);
-void drawAsteroid();
-void createNewASteroids();
-void unloadAsteroid();
+    extern Sound explosionSfx;
+    extern Sound pointsSfx;
 
-
+    void initAsteroid();
+    void loadAsteroid();
+    void updateAsteroid();
+    bool checkCollision(Asteroid asteroid, Projectile projectile);
+    void checkAsteroidCollisions(Player& p);
+    void createNewAsteroids(AsteroidSize size, Vector2 position, Vector2 direction);
+    void drawAsteroid();
+    void unloadAsteroid();
+}

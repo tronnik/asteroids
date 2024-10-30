@@ -1,14 +1,17 @@
 #pragma once
 
-void initGameplay();
+namespace asteroids
+{
+	void initGameplay();
 
-void loadGameplay();
+	void loadGameplay();
 
-void updateGameplay(bool& gameOver);
+	void updateGameplay(bool& gameOver);
 
-void drawGameplay(bool& menuOn, bool& pauseOn);
+	void drawGameplay(bool& menuOn, bool& pauseOn);
 
-void resetGame();
+	void resetGame();
 
-void unloadGameplay();
+	void unloadGameplay();
+}
 
