@@ -16,6 +16,7 @@ namespace asteroids
     Button playAgain;
     Button page1;
     Button page2;
+    
 
     void initButton(Button& b, int xPos, int yPos)
     {

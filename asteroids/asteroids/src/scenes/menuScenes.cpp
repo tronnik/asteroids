@@ -8,252 +8,330 @@
 
 namespace asteroids
 {
-    extern Texture2D background;
-    extern Music menuMusic;
+	extern Texture2D background;
+	extern Music menuMusic;
+
+	Button backgroundButton;
+	Button spaceShipButton;
+	Button bulletsButton;
+	Button raylibButton;
+
+	Button MenuMusicButton;
+	Button gameplayMusicButton;
+	Button pointsSfxButton;
+	Button explosionSfxButton;
+	Button loseSfxButton;
+	Button boostSfxButton;
+	Button shootSfxButton;
+
+
+	void initMenu()
+	{
+		background = LoadTexture("res/background.png");
 
-    void initMenu()
-    {
-        background = LoadTexture("res/background.png");
+		menuMusic = LoadMusicStream("res/menuMusic.mp3");
 
-        menuMusic = LoadMusicStream("res/menuMusic.mp3");
+		SetMusicVolume(menuMusic, 0.5f);
 
-        SetMusicVolume(menuMusic, 0.5f);
+		PlayMusicStream(menuMusic);
 
-        PlayMusicStream(menuMusic);
+		initButton(button, screenWidth / 2 - 100, 350);
+		initButton(controls, screenWidth / 2 - 100, 550);
+		initButton(credits, screenWidth / 2 - 100, 450);
+		initButton(exitGame, screenWidth / 2 - 100, 650);
+		initButton(backToMenu, screenWidth / 2 + 50, 700);
+		initButton(resumeGame, screenWidth / 2 - 200, 700);
+		initButton(playAgain, screenWidth / 2 - 200, 700);
 
-        initButton(button, screenWidth / 2 - 100, 350);
-        initButton(controls, screenWidth / 2 - 100, 550);
-        initButton(credits, screenWidth / 2 - 100, 450);
-        initButton(exitGame, screenWidth / 2 - 100, 650);
-        initButton(backToMenu, screenWidth / 2 + 50, 700);
-        initButton(resumeGame, screenWidth / 2 - 200, 700);
-        initButton(playAgain, screenWidth / 2 - 200, 700);
+		initButton(backgroundButton, screenWidth / 2 + 50, 250);
+		initButton(spaceShipButton, screenWidth / 2 + 50, 350);
+		initButton(bulletsButton, screenWidth / 2 + 50, 450);
+		initButton(raylibButton, screenWidth / 2 + 50, 550);
 
-        initPageButton(page1, screenWidth / 2 - 150, 700);
-        initPageButton(page2, screenWidth / 2 - 50, 700);
-    }
+		initButton(MenuMusicButton, screenWidth / 2 + 50, 100);
+		initButton(gameplayMusicButton, screenWidth / 2 + 50, 180);
+		initButton(pointsSfxButton, screenWidth / 2 + 50, 260);
+		initButton(explosionSfxButton, screenWidth / 2 + 50, 340);
+		initButton(loseSfxButton, screenWidth / 2 + 50, 420);
+		initButton(boostSfxButton, screenWidth / 2 + 50, 500);
+		initButton(shootSfxButton, screenWidth / 2 + 50, 580);
 
-    void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
-    {
-        UpdateMusicStream(menuMusic);
+		initPageButton(page1, screenWidth / 2 - 150, 700);
+		initPageButton(page2, screenWidth / 2 - 50, 700);
+	}
 
-        DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+	void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
+	{
+		UpdateMusicStream(menuMusic);
 
-        DrawText(TextFormat("ASTEROIDS"), screenWidth / 2 - 250, 150, 100, RED);
+		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
-        drawButton(button);
-        drawButton(controls);
-        drawButton(credits);
-        drawButton(exitGame);
+		DrawText(TextFormat("ASTEROIDS"), screenWidth / 2 - 250, 150, 100, RED);
 
-        drawPlayTitle();
-        drawControlTitle();
-        drawCreditsTitle();
-        drawExitTitle();
+		drawButton(button);
+		drawButton(controls);
+		drawButton(credits);
+		drawButton(exitGame);
 
-        if (isButtonPressed(button))
-        {
-            menuOn = false;
+		drawPlayTitle();
+		drawControlTitle();
+		drawCreditsTitle();
+		drawExitTitle();
 
-            resetGame();
-        }
+		if (isButtonPressed(button))
+		{
+			menuOn = false;
 
-        if (isButtonPressed(controls))
-        {
-            controlsOn = true;
-            menuOn = false;
-        }
+			resetGame();
+		}
 
-        if (isButtonPressed(credits))
-        {
-            creditsOn = true;
-            menuOn = false;
-        }
+		if (isButtonPressed(controls))
+		{
+			controlsOn = true;
+			menuOn = false;
+		}
 
-        if (isButtonPressed(exitGame))
-        {
-            StopMusicStream(menuMusic);
-            CloseWindow();
-        }
+		if (isButtonPressed(credits))
+		{
+			creditsOn = true;
+			menuOn = false;
+		}
 
-        if (isButtonPressed(backToMenu))
-        {
-            menuOn = true;
-            creditsOn = false;
-            controlsOn = false;
-        }
-    }
+		if (isButtonPressed(exitGame))
+		{
+			StopMusicStream(menuMusic);
+			CloseWindow();
+		}
 
-    void drawConstrols(bool& menuOn, bool& controlsOn)
-    {
-        DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+		if (isButtonPressed(backToMenu))
+		{
+			menuOn = true;
+			creditsOn = false;
+			controlsOn = false;
+		}
+	}
 
-        UpdateMusicStream(menuMusic);
+	void drawConstrols(bool& menuOn, bool& controlsOn)
+	{
+		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
-        DrawText("CONTROLS", screenWidth / 2 - 100, 100, 40, WHITE);
+		UpdateMusicStream(menuMusic);
 
-        DrawText("Left Click: ", screenWidth / 2 - 220, 250, 30, WHITE);
+		DrawText("CONTROLS", screenWidth / 2 - 100, 100, 40, WHITE);
 
-        DrawText("Shoot", screenWidth / 2 + 100, 250, 30, WHITE);
+		DrawText("Left Click: ", screenWidth / 2 - 220, 250, 30, WHITE);
 
-        DrawText("Right Click: ", screenWidth / 2 - 220, 350, 30, WHITE);
+		DrawText("Shoot", screenWidth / 2 + 100, 250, 30, WHITE);
 
-        DrawText("Move", screenWidth / 2 + 100, 350, 30, WHITE);
+		DrawText("Right Click: ", screenWidth / 2 - 220, 350, 30, WHITE);
 
-        drawBackToMenu(menuOn, controlsOn);
+		DrawText("Move", screenWidth / 2 + 100, 350, 30, WHITE);
 
-    }
+		drawBackToMenu(menuOn, controlsOn);
 
-    void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
-    {
-        DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+	}
 
-        UpdateMusicStream(menuMusic);
+	void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
+	{
+		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
-        DrawText(TextFormat("CREDITS"), screenWidth / 2 - 60, 50, 30, WHITE);
+		UpdateMusicStream(menuMusic);
 
-        DrawText("Developer: ", screenWidth / 2 - 250, 150, 30, WHITE);
+		DrawText(TextFormat("CREDITS"), screenWidth / 2 - 60, 50, 30, WHITE);
 
-        DrawText("Valentin Villar", screenWidth / 2 + 50, 150, 30, WHITE);
-        DrawText("Tronik in ITCH.IO ", screenWidth / 2 + 50, 180, 30, WHITE);
+		DrawText("Developer: ", screenWidth / 2 - 250, 150, 30, WHITE);
 
-        DrawText("Background By: ", screenWidth / 2 - 250, 250, 30, WHITE);
+		DrawText("Valentin Villar", screenWidth / 2 + 50, 150, 30, WHITE);
+		DrawText("Tronik in ITCH.IO ", screenWidth / 2 + 50, 180, 30, WHITE);
 
-        DrawText("Ansimuz in ITCH.IO", screenWidth / 2 + 50, 250, 30, WHITE);
+		DrawText("Background By: ", screenWidth / 2 - 250, 250, 30, WHITE);
 
-        DrawText("Spaceship By: ", screenWidth / 2 - 250, 350, 30, WHITE);
+		drawButton(backgroundButton);
+		DrawText("Ansimuz", screenWidth / 2 + 90, 260, 30, RED);
+		if (isButtonPressed(backgroundButton))
+		{
+			OpenURL("https://ansimuz.itch.io/space-background");
+		}
 
-        DrawText("Pixel By Pixel in ITCH.IO", screenWidth / 2 + 50, 350, 30, WHITE);
 
-        DrawText("Bullets By: ", screenWidth / 2 - 250, 450, 30, WHITE);
+		DrawText("Spaceship By: ", screenWidth / 2 - 250, 350, 30, WHITE);
+		drawButton(spaceShipButton);
+		DrawText("Pixel By Pixel", screenWidth / 2 + 70, 360, 25, RED);
+		if (isButtonPressed(spaceShipButton))
+		{
+			OpenURL("https://pixel-by-pixel.itch.io/alcwilliam-space-ship-pack");
+		}
 
-        DrawText("Ho88it in ITCH.IO", screenWidth / 2 + 50, 450, 30, WHITE);
+		DrawText("Bullets By: ", screenWidth / 2 - 250, 450, 30, WHITE);
+		drawButton(bulletsButton);
+		DrawText("Ho88it", screenWidth / 2 + 100, 460, 30, RED);
+		if (isButtonPressed(bulletsButton))
+		{
+			OpenURL("https://ho88it.itch.io/2-d-projectile-sprites-wild-west-character-pack");
+		}
 
-        DrawText("Library: ", screenWidth / 2 - 250, 550, 30, WHITE);
+		DrawText("Library: ", screenWidth / 2 - 250, 550, 30, WHITE);
 
-        DrawText("Raylib", screenWidth / 2 + 50, 550, 30, WHITE);
+		drawButton(raylibButton);
+		DrawText("Raylib", screenWidth / 2 + 90, 560, 30, RED);
+		if (isButtonPressed(raylibButton))
+		{
+			OpenURL("https://www.raylib.com/index.html");
+		}
 
-        drawPageButton(creditsOn, creditsOn2);
+		drawPageButton(creditsOn, creditsOn2);
 
-        drawBackToMenu(menuOn, creditsOn);
+		drawBackToMenu(menuOn, creditsOn);
 
-    }
+	}
 
-    void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
-    {
-        DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+	void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
+	{
+		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
-        UpdateMusicStream(menuMusic);
+		UpdateMusicStream(menuMusic);
 
-        DrawText(TextFormat("CREDITS"), screenWidth / 2 - 60, 50, 30, WHITE);
+		DrawText(TextFormat("CREDITS"), screenWidth / 2 - 60, 50, 30, WHITE);
 
-        DrawText("Menu Music: ", screenWidth / 2 - 250, 150, 30, WHITE);
+		DrawText("Menu Music: ", screenWidth / 2 - 250, 100, 30, WHITE);
+		drawButton(MenuMusicButton);
+		DrawText("Tronik", screenWidth / 2 + 100, 110, 30, RED);
+		if (isButtonPressed(MenuMusicButton))
+		{
+			OpenURL("https://suno.com/song/e59ff0d9-1128-4a84-a976-4d21dfbc791c");
+		}
 
-        DrawText("Valentin Villar", screenWidth / 2 + 50, 150, 30, WHITE);
-        DrawText("Tronik in SUNO AI ", screenWidth / 2 + 50, 180, 30, WHITE);
+		DrawText("Gameplay Music: ", screenWidth / 2 - 250, 180, 30, WHITE);
+		drawButton(gameplayMusicButton);
+		DrawText("Tronik", screenWidth / 2 + 70, 190, 30, RED);
+		if (isButtonPressed(gameplayMusicButton))
+		{
+			OpenURL("https://suno.com/song/bbfb93c9-37f9-4d51-8cfd-e15823f02192");
+		}
 
-        DrawText("Points SFX By: ", screenWidth / 2 - 250, 250, 30, WHITE);
 
-        DrawText("Zapslat", screenWidth / 2 + 50, 250, 30, WHITE);
+		DrawText("Points SFX By: ", screenWidth / 2 - 250, 260, 30, WHITE);
+		drawButton(pointsSfxButton);
+		DrawText("Zapslat", screenWidth / 2 + 70, 270, 30, RED);
+		if (isButtonPressed(pointsSfxButton))
+		{
+			OpenURL("https://www.zapsplat.com/music/game-sound-friendly-happy-positive-chime-good-for-win-gain-points-or-bonus/");
+		}
 
-        DrawText("Explosion SFX By: ", screenWidth / 2 - 250, 350, 30, WHITE);
+		DrawText("Explosion SFX By: ", screenWidth / 2 - 250, 340, 30, WHITE);
+		drawButton(explosionSfxButton);
+		DrawText("Zapslat", screenWidth / 2 + 70, 350, 30, RED);
+		if (isButtonPressed(explosionSfxButton))
+		{
+			OpenURL("https://www.zapsplat.com/music/8bit-medium-explosion-bomb-boom-or-blast-cannon-retro-old-school-classic-cartoon/");
+		}
 
-        DrawText("Zapslat", screenWidth / 2 + 50, 350, 30, WHITE);
+		DrawText("lose SFX By: ", screenWidth / 2 - 250, 420, 30, WHITE);
+		drawButton(loseSfxButton);
+		DrawText("Zapslat", screenWidth / 2 + 70, 430, 30, RED);
+		if (isButtonPressed(loseSfxButton))
+		{
+			OpenURL("https://www.zapsplat.com/music/cartoon-orchestral-musical-pizzicato-riff-short-fail-or-lose/");
+		}
 
-        DrawText("lose SFX By: ", screenWidth / 2 - 250, 450, 30, WHITE);
+		DrawText("Boost SFX by: ", screenWidth / 2 - 250, 500, 30, WHITE);
+		drawButton(boostSfxButton);
+		DrawText("Zapslat", screenWidth / 2 + 70, 510, 30, RED);
+		if (isButtonPressed(boostSfxButton))
+		{
+			//OpenURL("");
+		}
 
-        DrawText("Zapslat", screenWidth / 2 + 50, 450, 30, WHITE);
+		DrawText("Shoot SFX by: ", screenWidth / 2 - 250, 580, 30, WHITE);
+		drawButton(shootSfxButton);
+		DrawText("Zapslat", screenWidth / 2 + 70, 590, 30, RED);
+		if (isButtonPressed(boostSfxButton))
+		{
+			OpenURL("https://www.zapsplat.com/music/anime-hard-and-fast-laser-shoot-3/");
+		}
 
-        DrawText("Boost SFX by: ", screenWidth / 2 - 250, 550, 30, WHITE);
+		drawPageButton(creditsOn, creditsOn2);
 
-        DrawText("Zapslat", screenWidth / 2 + 50, 550, 30, WHITE);
+		drawBackToMenu(menuOn, creditsOn2);
+	}
 
-        DrawText("Shoot SFX by: ", screenWidth / 2 - 250, 650, 30, WHITE);
+	void drawBackToMenu(bool& boolTrue, bool& boolFalse)
+	{
+		drawButton(backToMenu);
 
-        DrawText("Zapslat", screenWidth / 2 + 50, 650, 30, WHITE);
+		drawBackToMenuTitle();
 
-        drawPageButton(creditsOn, creditsOn2);
+		if (isButtonPressed(backToMenu))
+		{
+			boolTrue = true;
+			boolFalse = false;
+		}
+	}
 
-        drawBackToMenu(menuOn, creditsOn2);
-    }
+	void drawPause(bool& menuOn, bool& pauseOn)
+	{
+		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
-    void drawBackToMenu(bool& boolTrue, bool& boolFalse)
-    {
-        drawButton(backToMenu);
+		UpdateMusicStream(menuMusic);
 
-        drawBackToMenuTitle();
+		DrawText(TextFormat("Pause game"), screenWidth / 2 - 150, screenHeight / 2 - 100, 50, WHITE);
 
-        if (isButtonPressed(backToMenu))
-        {
-            boolTrue = true;
-            boolFalse = false;
-        }
-    }
+		DrawText(TextFormat("What Will You Do"), screenWidth / 2 - 200, screenHeight / 2 - 30, 50, WHITE);
 
-    void drawPause(bool& menuOn, bool& pauseOn)
-    {
-        DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+		drawButton(resumeGame);
+		drawResumeGameTitle();
 
-        UpdateMusicStream(menuMusic);
+		if (isButtonPressed(resumeGame))
+			pauseOn = false;
 
-        DrawText(TextFormat("Pause game"), screenWidth / 2 - 150, screenHeight / 2 - 100, 50, WHITE);
+		drawBackToMenu(menuOn, pauseOn);
+	}
 
-        DrawText(TextFormat("What Will You Do"), screenWidth / 2 - 200, screenHeight / 2 - 30, 50, WHITE);
+	void drawPageButton(bool& creditsOn, bool& creditsOn2)
+	{
+		drawButton(page1);
+		drawPage1Title();
 
-        drawButton(resumeGame);
-        drawResumeGameTitle();
+		if (isButtonPressed(page1))
+		{
+			creditsOn = true;
+			creditsOn2 = false;
+		}
 
-        if (isButtonPressed(resumeGame))
-            pauseOn = false;
+		drawButton(page2);
+		drawPage2Title();
 
-        drawBackToMenu(menuOn, pauseOn);
-    }
+		if (isButtonPressed(page2))
+		{
+			creditsOn = false;
+			creditsOn2 = true;
+		}
+	}
 
-    void drawPageButton(bool& creditsOn, bool& creditsOn2)
-    {
-        drawButton(page1);
-        drawPage1Title();
+	void drawGameOver(bool& menuOn, bool& gameOver)
+	{
+		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
-        if (isButtonPressed(page1))
-        {
-            creditsOn = true;
-            creditsOn2 = false;
-        }
+		UpdateMusicStream(menuMusic);
 
-        drawButton(page2);
-        drawPage2Title();
+		DrawText(TextFormat("Game Over"), screenWidth / 2 - 150, screenHeight / 2 - 100, 50, WHITE);
 
-        if (isButtonPressed(page2))
-        {
-            creditsOn = false;
-            creditsOn2 = true;
-        }
-    }
+		DrawText(TextFormat("What Will You Do"), screenWidth / 2 - 200, screenHeight / 2 - 30, 50, WHITE);
 
-    void drawGameOver(bool& menuOn, bool& gameOver)
-    {
-        DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
+		drawButton(playAgain);
+		drawPlayAgainTitle();
 
-        UpdateMusicStream(menuMusic);
+		if (isButtonPressed(playAgain))
+			gameOver = false;
+		resetGame();
 
-        DrawText(TextFormat("Game Over"), screenWidth / 2 - 150, screenHeight / 2 - 100, 50, WHITE);
+		drawBackToMenu(menuOn, gameOver);
+	}
 
-        DrawText(TextFormat("What Will You Do"), screenWidth / 2 - 200, screenHeight / 2 - 30, 50, WHITE);
-
-        drawButton(playAgain);
-        drawPlayAgainTitle();
-
-        if (isButtonPressed(playAgain))
-            gameOver = false;
-        resetGame();
-
-        drawBackToMenu(menuOn, gameOver);
-    }
-
-    void unloadMenu()
-    {
-        UnloadTexture(background);
-        UnloadMusicStream(menuMusic);
-    }
+	void unloadMenu()
+	{
+		UnloadTexture(background);
+		UnloadMusicStream(menuMusic);
+	}
 
 }
