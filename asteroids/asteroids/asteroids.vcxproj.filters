@@ -71,9 +71,6 @@
     <ClInclude Include="src\game.h">
       <Filter>Archivos de encabezado\manage</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\asteroid.h">
-      <Filter>Archivos de encabezado\objects</Filter>
-    </ClInclude>
     <ClInclude Include="src\objects\button.h">
       <Filter>Archivos de encabezado\objects</Filter>
     </ClInclude>
@@ -81,6 +78,9 @@
       <Filter>Archivos de encabezado\objects</Filter>
     </ClInclude>
     <ClInclude Include="src\objects\projectile.h">
+      <Filter>Archivos de encabezado\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\objects\asteroid.h">
       <Filter>Archivos de encabezado\objects</Filter>
     </ClInclude>
   </ItemGroup>

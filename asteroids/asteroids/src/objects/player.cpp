@@ -126,18 +126,17 @@ namespace asteroids
 
 	void checkPlayerCollisions(Player& p)
 	{
-		for (int i = 0; i < maxAsteroids; i++)
+		for (size_t i = 0; i < asteroids.size(); ++i)
 		{
 			if (asteroids[i].isActive && p.isActive)
 			{
 				if (checkCollsion(p, asteroids[i]))
 				{
 					p.isActive = false;
-
-					p.life--;
+					p.life--;          
 
 					if (p.life > 0)
-						p.respawnTime = 1.0f;
+						p.respawnTime = 1.0f; 
 
 					SetSoundVolume(loseSfx, 0.3f);
 					PlaySound(loseSfx);
@@ -151,7 +150,7 @@ namespace asteroids
 
 			if (p.respawnTime <= 0.0f)
 			{
-				p.isActive = true;
+				p.isActive = true; 
 				p.position = { static_cast<float>(screenWidth) / 2.0f, static_cast<float>(screenHeight) / 2.0f };
 				p.speed = { 0.0f, 0.0f };
 				p.respawnTime = 0.0f;

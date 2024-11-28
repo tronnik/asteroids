@@ -5,6 +5,8 @@
 #include "button.h"
 #include "utils.h"
 #include "gameplayScenes.h"
+#include "player.h"
+
 
 namespace asteroids
 {
@@ -62,6 +64,8 @@ namespace asteroids
 
 	void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 	{
+		ClearBackground(BLACK);
+
 		UpdateMusicStream(menuMusic);
 
 		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
@@ -113,6 +117,8 @@ namespace asteroids
 
 	void drawConstrols(bool& menuOn, bool& controlsOn)
 	{
+		ClearBackground(BLACK);
+
 		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
 		UpdateMusicStream(menuMusic);
@@ -133,6 +139,8 @@ namespace asteroids
 
 	void drawCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 	{
+		ClearBackground(BLACK);
+
 		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
 		UpdateMusicStream(menuMusic);
@@ -187,6 +195,8 @@ namespace asteroids
 
 	void drawSecondCredits(bool& menuOn, bool& creditsOn, bool& creditsOn2)
 	{
+		ClearBackground(BLACK);
+
 		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
 		UpdateMusicStream(menuMusic);
@@ -257,6 +267,8 @@ namespace asteroids
 
 	void drawBackToMenu(bool& boolTrue, bool& boolFalse)
 	{
+		ClearBackground(BLACK);
+
 		drawButton(backToMenu);
 
 		drawBackToMenuTitle();
@@ -270,6 +282,8 @@ namespace asteroids
 
 	void drawPause(bool& menuOn, bool& pauseOn)
 	{
+		ClearBackground(BLACK);
+
 		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
 		UpdateMusicStream(menuMusic);
@@ -289,6 +303,8 @@ namespace asteroids
 
 	void drawPageButton(bool& creditsOn, bool& creditsOn2)
 	{
+		ClearBackground(BLACK);
+
 		drawButton(page1);
 		drawPage1Title();
 
@@ -310,13 +326,18 @@ namespace asteroids
 
 	void drawGameOver(bool& menuOn, bool& gameOver)
 	{
+
+		ClearBackground(BLACK);
+
 		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
 		UpdateMusicStream(menuMusic);
 
 		DrawText(TextFormat("Game Over"), screenWidth / 2 - 150, screenHeight / 2 - 100, 50, WHITE);
 
-		DrawText(TextFormat("What Will You Do"), screenWidth / 2 - 200, screenHeight / 2 - 30, 50, WHITE);
+		//DrawText(TextFormat("Points: %01i", player.point), screenWidth / 2 - 200, screenHeight / 2 - 30, 50, WHITE);
+
+		DrawText(TextFormat("What Will You Do"), screenWidth / 2 - 200, screenHeight / 2 + 40, 50, WHITE);
 
 		drawButton(playAgain);
 		drawPlayAgainTitle();
@@ -330,6 +351,8 @@ namespace asteroids
 
 	void unloadMenu()
 	{
+		ClearBackground(BLACK);
+
 		UnloadTexture(background);
 		UnloadMusicStream(menuMusic);
 	}

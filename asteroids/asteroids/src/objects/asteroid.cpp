@@ -1,9 +1,9 @@
 #include "asteroid.h"
 
 #include <iostream>
+#include <cmath>
 
 #include "utils.h"
-#include <cmath>
 
 namespace asteroids
 {
@@ -14,6 +14,9 @@ namespace asteroids
 
     Sound explosionSfx;
     Sound pointsSfx;
+
+    float spawnTimer = 0.0f; 
+    const float spawnInterval = 3.0f; 
 
     void initAsteroid()
     {
@@ -45,6 +48,8 @@ namespace asteroids
             asteroids[i].isActive = true;
 
         }
+
+        spawnTimer = 0.0f;
     }
 
     void loadAsteroid()
@@ -52,30 +57,71 @@ namespace asteroids
         enemy = LoadTexture("res/asteroid-1.png");
         miniEnemy = LoadTexture("res/asteroid-2.png");
 
-        shootSfx = LoadSound("res/shootSfx.mp3");
         explosionSfx = LoadSound("res/explosionSfx.mp3");
         pointsSfx = LoadSound("res/pointsSfx.mp3");
     }
 
+    void spawnAsteroids()
+    {
+        spawnTimer += GetFrameTime();
+
+        if (spawnTimer >= spawnInterval)
+        {
+            spawnTimer = 0.0f; 
+
+            Asteroid newAsteroid;
+            int side = GetRandomValue(0, 3);
+
+            switch (side)
+            {
+            case 0:
+                newAsteroid.position = { static_cast<float>(screenWidthMin), static_cast<float>(GetRandomValue(screenHeightMin, screenHeight)) };
+                break;
+            case 1:
+                newAsteroid.position = { static_cast<float>(screenWidth), static_cast<float>(GetRandomValue(screenHeightMin, screenHeight)) };
+                break;
+            case 2:
+                newAsteroid.position = { static_cast<float>(GetRandomValue(screenWidthMin, screenWidth)), static_cast<float>(screenHeightMin) };
+                break;
+            case 3:
+                newAsteroid.position = { static_cast<float>(GetRandomValue(screenWidthMin, screenWidth)), static_cast<float>(screenHeight) };
+                break;
+            }
+
+            newAsteroid.speed = { static_cast<float>(rand() % 200), static_cast<float>(rand() % 200) };
+            newAsteroid.direction = { newAsteroid.speed.x, newAsteroid.speed.y };
+            newAsteroid.radius = 50.0f + static_cast<float>(rand() % 20);
+            newAsteroid.size = AsteroidSize::LARGE;
+            newAsteroid.isActive = true;
+
+            asteroids.push_back(newAsteroid);
+        }
+    }
+
     void updateAsteroid()
     {
-        for (int i = 0; i < static_cast<int>(asteroids.size()); i++)
+        for (size_t i = 0; i < asteroids.size(); ++i)
         {
-            asteroids[i].position.x += asteroids[i].speed.x * GetFrameTime();
-            asteroids[i].position.y += asteroids[i].speed.y * GetFrameTime();
+            if (asteroids[i].isActive)
+            {
+                asteroids[i].position.x += asteroids[i].speed.x * GetFrameTime();
+                asteroids[i].position.y += asteroids[i].speed.y * GetFrameTime();
 
-            if (asteroids[i].position.x < static_cast<float>(screenWidthMin))
-                asteroids[i].position.x = static_cast<float>(screenWidth);
+                if (asteroids[i].position.x < static_cast<float>(screenWidthMin))
+                    asteroids[i].position.x = static_cast<float>(screenWidth);
 
-            if (asteroids[i].position.x > static_cast<float>(screenWidth))
-                asteroids[i].position.x = static_cast<float>(screenWidthMin);
-
-            if (asteroids[i].position.y < static_cast<float>(screenHeightMin))
-                asteroids[i].position.y = static_cast<float>(screenHeight);
-
-            if (asteroids[i].position.y > static_cast<float>(screenHeight))
-                asteroids[i].position.y = static_cast<float>(screenHeightMin);
+                if (asteroids[i].position.x > static_cast<float>(screenWidth))
+                    asteroids[i].position.x = static_cast<float>(screenWidthMin);
+                    
+                if (asteroids[i].position.y < static_cast<float>(screenHeightMin))
+                    asteroids[i].position.y = static_cast<float>(screenHeight);
+                   
+                if (asteroids[i].position.y > static_cast<float>(screenHeight))
+                    asteroids[i].position.y = static_cast<float>(screenHeightMin);
+            }
         }
+
+        spawnAsteroids();
     }
 
     bool checkCollision(Asteroid asteroid, Projectile projectile)
@@ -85,61 +131,6 @@ namespace asteroids
         float distance = sqrt((distX * distX) + (distY * distY));
 
         return distance <= asteroid.radius + projectile.radius;
-    }
-
-    void checkAsteroidCollisions(Player& p)
-    {
-        for (int i = 0; i < static_cast<int>(asteroids.size()); i++)
-        {
-            if (asteroids[i].isActive)
-            {
-                for (int j = 0; j < projectileCount; j++)
-                {
-                    if (projectiles[j].isActive && checkCollision(asteroids[i], projectiles[j]))
-                    {
-                        AsteroidSize currentSize = asteroids[i].size;
-
-                        asteroids[i].isActive = false;
-                        projectiles[j].isActive = false;
-                        p.point += 10;
-
-                        SetSoundVolume(explosionSfx, 0.3f);
-                        PlaySound(explosionSfx);
-                        SetSoundVolume(pointsSfx, 0.1f);
-                        PlaySound(pointsSfx);
-
-                        if (currentSize != AsteroidSize::SMALL) {
-                            createNewAsteroids(currentSize, asteroids[i].position, asteroids[i].direction);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-    void drawAsteroid()
-    {
-        for (int i = 0; i < static_cast<int>(asteroids.size()); i++)
-        {
-            if (asteroids[i].isActive)
-            {
-                switch (asteroids[i].size)
-                {
-                case AsteroidSize::LARGE:
-                    DrawTextureEx(enemy, asteroids[i].position, 0.0f, 3.0f, WHITE);
-                    break;
-
-                case AsteroidSize::MEDIUM:
-                    DrawTextureEx(miniEnemy, asteroids[i].position, 0.0f, 2.0f, WHITE);
-                    break;
-
-                case AsteroidSize::SMALL:
-                    DrawTextureEx(miniEnemy, asteroids[i].position, 0.0f, 1.0f, WHITE);
-                    break;
-                }
-            }
-        }
     }
 
     void createNewAsteroids(AsteroidSize size, Vector2 position, Vector2 direction)
@@ -188,11 +179,65 @@ namespace asteroids
         }
     }
 
+    void checkAsteroidCollisions(Player& p)
+    {
+        for (size_t i = 0; i < asteroids.size(); ++i)
+        {
+            if (asteroids[i].isActive)
+            {
+                for (int j = 0; j < projectileCount; j++)
+                {
+                    if (projectiles[j].isActive && checkCollision(asteroids[i], projectiles[j]))
+                    {
+                        AsteroidSize currentSize = asteroids[i].size;
+
+                        asteroids[i].isActive = false;
+                        projectiles[j].isActive = false;
+                        p.point += 10;
+
+                        SetSoundVolume(explosionSfx, 0.3f);
+                        PlaySound(explosionSfx);
+                        SetSoundVolume(pointsSfx, 0.1f);
+                        PlaySound(pointsSfx);
+
+                        if (currentSize != AsteroidSize::SMALL)
+                        {
+                            createNewAsteroids(currentSize, asteroids[i].position, asteroids[i].direction);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    void drawAsteroid()
+    {
+        for (size_t i = 0; i < asteroids.size(); ++i)
+        {
+            if (asteroids[i].isActive)
+            {
+                switch (asteroids[i].size)
+                {
+                case AsteroidSize::LARGE:
+                    DrawTextureEx(enemy, asteroids[i].position, 0.0f, 3.0f, WHITE);
+                    break;
+
+                case AsteroidSize::MEDIUM:
+                    DrawTextureEx(miniEnemy, asteroids[i].position, 0.0f, 2.0f, WHITE);
+                    break;
+
+                case AsteroidSize::SMALL:
+                    DrawTextureEx(miniEnemy, asteroids[i].position, 0.0f, 1.0f, WHITE);
+                    break;
+                }
+            }
+        }
+    }
+
     void unloadAsteroid()
     {
         UnloadTexture(enemy);
         UnloadSound(pointsSfx);
         UnloadSound(explosionSfx);
     }
-
 }

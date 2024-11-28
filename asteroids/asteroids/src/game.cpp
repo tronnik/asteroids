@@ -5,7 +5,6 @@
 #include "utils.h"
 #include "gameplayScenes.h"
 #include "menuScenes.h"
-#include "player.h"
 
 namespace asteroids
 {
@@ -29,6 +28,8 @@ namespace asteroids
 	bool gameOver = false;
 	bool pauseOn = false;
 
+	bool windowOpen = true;
+
 	Texture2D background;
 	Music menuMusic;
 	Music gameplayMusic;
@@ -39,7 +40,7 @@ namespace asteroids
 
 		loadGame();
 
-		while (!WindowShouldClose())
+		while (!WindowShouldClose() && windowOpen)
 		{
 			update();
 			draw();
@@ -118,6 +119,6 @@ namespace asteroids
 	void close()
 	{
 		CloseAudioDevice();
-		CloseWindow();
+		windowOpen = false;
 	}
 }

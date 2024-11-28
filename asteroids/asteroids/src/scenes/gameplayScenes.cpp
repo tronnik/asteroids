@@ -45,6 +45,8 @@ namespace asteroids
 
 	void drawGameplay(bool& menuOn, bool& pauseOn)
 	{
+		ClearBackground(BLACK);
+
 		background = LoadTexture("res/background.png");
 		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 

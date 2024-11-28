@@ -1,9 +1,10 @@
 #pragma once
 
+#include <vector>
+
 #include "raylib.h"
 
 #include "projectile.h"
-#include <vector>
 
 namespace asteroids
 {
@@ -19,12 +20,12 @@ namespace asteroids
         Vector2 position;
         Vector2 speed;
         Vector2 direction;
+        AsteroidSize size;
         float radius;
         bool isActive;
-        AsteroidSize size;
     };
 
-    const int maxAsteroids = 20;
+    const int maxAsteroids = 5;
     extern std::vector<Asteroid> asteroids;
 
     extern Sound explosionSfx;
@@ -36,6 +37,7 @@ namespace asteroids
     bool checkCollision(Asteroid asteroid, Projectile projectile);
     void checkAsteroidCollisions(Player& p);
     void createNewAsteroids(AsteroidSize size, Vector2 position, Vector2 direction);
+    void spawnAsteroids();
     void drawAsteroid();
     void unloadAsteroid();
 }
