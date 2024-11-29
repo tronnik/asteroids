@@ -6,6 +6,7 @@
 #include "objects/utils.h"
 #include "scenes/gameplayScenes.h"
 #include "objects/player.h"
+#include "game.h"
 
 namespace asteroids
 {
@@ -145,8 +146,8 @@ namespace asteroids
 		{
 			PlaySound(clickSfx);
 			StopMusicStream(menuMusic);
-			CloseWindow();
-
+			
+			close();
 		}
 
 		if (isButtonPressed(backToMenu))
@@ -418,10 +419,9 @@ namespace asteroids
 
 	void unloadMenu()
 	{
-		ClearBackground(BLACK);
-
 		UnloadTexture(background);
 		UnloadMusicStream(menuMusic);
+		UnloadSound(clickSfx);
 	}
 
 }

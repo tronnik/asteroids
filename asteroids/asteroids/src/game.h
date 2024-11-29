@@ -3,4 +3,5 @@
 namespace asteroids
 {
 	void run();
+	void close();
 }

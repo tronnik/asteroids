@@ -14,7 +14,7 @@ namespace asteroids
 	static void update();
 	static void draw();
 	static void unloadGame();
-	static void close();
+	
 
 	int screenWidth = 1024;
 	int screenHeight = 768;
