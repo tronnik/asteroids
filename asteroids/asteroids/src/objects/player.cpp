@@ -4,7 +4,6 @@
 
 #include "objects/utils.h"
 #include "objects/projectile.h"
-#include "objects/asteroid.h"
 
 namespace asteroids
 {

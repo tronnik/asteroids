@@ -1,10 +1,8 @@
 #include "scenes/gameplayScenes.h"
 
-#include "objects/player.h"
 #include "objects/asteroid.h"
 #include "objects/button.h"
 #include "objects/utils.h"
-#include "objects/projectile.h"
 
 namespace asteroids
 {
@@ -122,8 +120,6 @@ namespace asteroids
 			}
 		}
 	}
-
-	
 
 	void updateGameplay(bool& gameOver)
 	{

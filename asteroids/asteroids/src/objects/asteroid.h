@@ -4,8 +4,6 @@
 
 #include "raylib.h"
 
-#include "objects/projectile.h"
-
 namespace asteroids
 {
     enum class AsteroidSize
