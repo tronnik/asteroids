@@ -113,60 +113,6 @@ namespace asteroids
 
 	}
 
-	bool checkCollsion(Player p, Asteroid asteroid)
-	{
-		float distX = asteroid.position.x - p.position.x;
-		float distY = asteroid.position.y - p.position.y;
-		float distance = sqrtf((distX * distX) + (distY * distY));
-
-		if (distance <= asteroid.radius + p.radius)
-		{
-			return true;
-		}
-		return false;
-	}
-
-	void checkPlayerCollisions(Player& p)
-	{
-		p.invensible -= GetFrameTime();
-
-		for (size_t i = 0; i < asteroids.size(); ++i)
-		{
-			if (asteroids[i].isActive && p.isActive)
-			{
-				if (checkCollsion(p, asteroids[i]))
-				{
-					if (p.invensible <= 0.0f)
-					{
-						p.isActive = false;
-						p.life--;
-					
-						if (p.life > 0)
-							p.respawnTime = 1.0f;
-					
-						SetSoundVolume(loseSfx, 0.3f);
-						PlaySound(loseSfx);
-					}
-				}
-			}
-		}
-
-		if (!p.isActive && p.life > 0)
-		{
-			p.respawnTime -= GetFrameTime();
-
-			if (p.respawnTime <= 0.0f)
-			{
-				p.isActive = true;
-				p.position = { static_cast<float>(screenWidth) / 2.0f, static_cast<float>(screenHeight) / 2.0f };
-				p.speed = { 0.0f, 0.0f };
-				p.respawnTime = 0.0f;
-
-				p.invensible = 5.0f;
-			}
-		}
-	}
-
 	void drawPlayer(Player& p)
 	{
 		int lifePosX = 500;

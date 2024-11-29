@@ -34,8 +34,6 @@ namespace asteroids
     void initAsteroid();
     void loadAsteroid();
     void updateAsteroid();
-    bool checkCollision(Asteroid asteroid, Projectile projectile);
-    void checkAsteroidCollisions(Player& p);
     void createNewAsteroids(AsteroidSize size, Vector2 position, Vector2 direction);
     void spawnAsteroids();
     void drawAsteroid();

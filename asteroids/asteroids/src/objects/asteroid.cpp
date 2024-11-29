@@ -124,15 +124,6 @@ namespace asteroids
         spawnAsteroids();
     }
 
-    bool checkCollision(Asteroid asteroid, Projectile projectile)
-    {
-        float distX = asteroid.position.x - projectile.position.x;
-        float distY = asteroid.position.y - projectile.position.y;
-        float distance = sqrt((distX * distX) + (distY * distY));
-
-        return distance <= asteroid.radius + projectile.radius;
-    }
-
     void createNewAsteroids(AsteroidSize size, Vector2 position, Vector2 direction)
     {
         if (size == AsteroidSize::LARGE)
@@ -175,37 +166,6 @@ namespace asteroids
                 newAsteroid.radius = 15.0f;
                 newAsteroid.isActive = true;
                 asteroids.push_back(newAsteroid);
-            }
-        }
-    }
-
-    void checkAsteroidCollisions(Player& p)
-    {
-        for (size_t i = 0; i < asteroids.size(); ++i)
-        {
-            if (asteroids[i].isActive)
-            {
-                for (int j = 0; j < projectileCount; j++)
-                {
-                    if (projectiles[j].isActive && checkCollision(asteroids[i], projectiles[j]))
-                    {
-                        AsteroidSize currentSize = asteroids[i].size;
-
-                        asteroids[i].isActive = false;
-                        projectiles[j].isActive = false;
-                        p.point += 10;
-
-                        SetSoundVolume(explosionSfx, 0.3f);
-                        PlaySound(explosionSfx);
-                        SetSoundVolume(pointsSfx, 0.1f);
-                        PlaySound(pointsSfx);
-
-                        if (currentSize != AsteroidSize::SMALL)
-                        {
-                            createNewAsteroids(currentSize, asteroids[i].position, asteroids[i].direction);
-                        }
-                    }
-                }
             }
         }
     }

@@ -32,8 +32,6 @@ namespace asteroids
     void initPlayer(Player& p);
     void loadPlayer();
     void updatePlayer(Player& p, bool& gameOver);
-    bool checkCollsion(Player p, Asteroid asteroid);
-    void checkPlayerCollisions(Player& p);
     void drawPlayer(Player& p);
     void unloadPlayer();
 }
