@@ -114,7 +114,7 @@
       <AdditionalDependencies>raylib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>"$(SolutionDir)scripts\copy res.bat" "$(SolutionDir)" "$(OutDir)"</Command>
+      <Command>xcopy "$(ProjectDir)res" "$(OutDir)res" /i /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
