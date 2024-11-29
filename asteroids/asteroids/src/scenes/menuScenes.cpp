@@ -7,7 +7,6 @@
 #include "scenes/gameplayScenes.h"
 #include "objects/player.h"
 
-
 namespace asteroids
 {
 	extern Texture2D background;

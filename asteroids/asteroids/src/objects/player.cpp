@@ -118,6 +118,11 @@ namespace asteroids
 		int pointsPosX = 300;
 		int lifePointsPosY = 10;
 
+		if (player.invensible > 0.0f)
+		{
+			DrawCircle(static_cast<int>(player.position.x), static_cast<int>(player.position.y), player.radius, SKYBLUE);
+		}
+
 		if (p.isActive && p.life > 0)
 		{
 			Rectangle source = { 0.0f, 0.0f, static_cast<float>(spaceShip.width), static_cast<float>(spaceShip.height) };
