@@ -51,6 +51,10 @@ namespace asteroids
 		unloadGame();
 
 		close();
+
+		CloseAudioDevice();
+
+		CloseWindow();
 	}
 
 	void Initialization()
@@ -121,7 +125,6 @@ namespace asteroids
 
 	void close()
 	{
-		CloseAudioDevice();
 		windowOpen = false;
 	}
 }
