@@ -66,6 +66,7 @@ namespace asteroids
 	void loadGame()
 	{
 		loadGameplay();
+		loadMenu();
 	}
 
 	void update()

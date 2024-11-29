@@ -40,11 +40,6 @@ namespace asteroids
 
 	void initMenu()
 	{
-
-		background = LoadTexture("res/background.png");
-
-		menuMusic = LoadMusicStream("res/menuMusic.mp3");
-
 		SetMusicVolume(menuMusic, 0.5f);
 
 		PlayMusicStream(menuMusic);
@@ -90,6 +85,12 @@ namespace asteroids
 		initPageButton(page1, (screenWidth / 2 - oneHundredFifty), sevenHundred);
 
 		initPageButton(page2, (screenWidth / 2 - fifty), sevenHundred);
+	}
+
+	void loadMenu()
+	{
+		background = LoadTexture("res/background.png");
+		menuMusic = LoadMusicStream("res/menuMusic.mp3");
 	}
 
 	void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)

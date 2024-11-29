@@ -16,8 +16,6 @@ namespace asteroids
 
 	void initGameplay()
 	{
-		gameplayMusic = LoadMusicStream("res/gameplayMusic.mp3");
-
 		SetMusicVolume(gameplayMusic, 0.5f);
 
 		PlayMusicStream(gameplayMusic);
@@ -35,6 +33,8 @@ namespace asteroids
 	{
 		loadPlayer();
 		loadAsteroid();
+		background = LoadTexture("res/background.png");
+		gameplayMusic = LoadMusicStream("res/gameplayMusic.mp3");
 	}
 
 	void updateGameplay(bool& gameOver)
@@ -50,7 +50,6 @@ namespace asteroids
 	{
 		ClearBackground(BLACK);
 
-		background = LoadTexture("res/background.png");
 		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
 
 		UpdateMusicStream(gameplayMusic);
