@@ -16,10 +16,6 @@ namespace asteroids
 
 	void initGameplay()
 	{
-		SetMusicVolume(gameplayMusic, 0.5f);
-
-		PlayMusicStream(gameplayMusic);
-
 		initPlayer(player);
 
 		initAsteroid();
@@ -39,6 +35,10 @@ namespace asteroids
 
 	void updateGameplay(bool& gameOver)
 	{
+		SetMusicVolume(gameplayMusic, 0.5f);
+
+		PlayMusicStream(gameplayMusic);
+
 		updatePlayer(player, gameOver);
 		checkPlayerCollisions(player);
 

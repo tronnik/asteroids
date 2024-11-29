@@ -21,11 +21,13 @@ namespace asteroids
 
 	Button MenuMusicButton;
 	Button gameplayMusicButton;
-	Button pointsSfxButton;
+	Button clickSfxButton;
 	Button explosionSfxButton;
 	Button loseSfxButton;
 	Button boostSfxButton;
 	Button shootSfxButton;
+
+	Sound clickSfx;
 
 	static int hundred = 100;
 	static int fifty = 50;
@@ -40,10 +42,6 @@ namespace asteroids
 
 	void initMenu()
 	{
-		SetMusicVolume(menuMusic, 0.5f);
-
-		PlayMusicStream(menuMusic);
-
 		initButton(button, (screenWidth / 2 - hundred), threeHundredFifty);
 
 		initButton(controls, (screenWidth / 2 - hundred), (fiveHundred + fifty));
@@ -72,7 +70,7 @@ namespace asteroids
 
 		initButton(gameplayMusicButton, (screenWidth / 2 + fifty), (oneHundredFifty + 30));
 
-		initButton(pointsSfxButton, (screenWidth / 2 + fifty), (twoHundredFifty + 10));
+		initButton(clickSfxButton, (screenWidth / 2 + fifty), (twoHundredFifty + 10));
 
 		initButton(explosionSfxButton, (screenWidth / 2 + fifty), (threeHundredFifty - 10));
 
@@ -91,12 +89,18 @@ namespace asteroids
 	{
 		background = LoadTexture("res/background.png");
 		menuMusic = LoadMusicStream("res/menuMusic.mp3");
+		clickSfx = LoadSound("res/clickSfx.mp3");
 	}
 
 	void drawMenu(bool& menuOn, bool& controlsOn, bool& creditsOn)
 	{
 		ClearBackground(BLACK);
 
+		SetMusicVolume(menuMusic, 0.5f);
+
+		SetSoundVolume(clickSfx, 0.3f);
+
+		PlayMusicStream(menuMusic);
 		UpdateMusicStream(menuMusic);
 
 		DrawTextureEx(background, Vector2{ 0,0 }, 0.0f, 5.0f, WHITE);
@@ -117,6 +121,8 @@ namespace asteroids
 
 		if (isButtonPressed(button))
 		{
+			PlaySound(clickSfx);
+
 			menuOn = false;
 
 			resetGame();
@@ -124,24 +130,29 @@ namespace asteroids
 
 		if (isButtonPressed(controls))
 		{
+			PlaySound(clickSfx);
 			controlsOn = true;
 			menuOn = false;
 		}
 
 		if (isButtonPressed(credits))
 		{
+			PlaySound(clickSfx);
 			creditsOn = true;
 			menuOn = false;
 		}
 
 		if (isButtonPressed(exitGame))
 		{
+			PlaySound(clickSfx);
 			StopMusicStream(menuMusic);
 			CloseWindow();
+
 		}
 
 		if (isButtonPressed(backToMenu))
 		{
+			PlaySound(clickSfx);
 			menuOn = true;
 			creditsOn = false;
 			controlsOn = false;
@@ -186,6 +197,7 @@ namespace asteroids
 		DrawText("Valentin Villar", (screenWidth / 2 + fifty + 10), oneHundredFifty + 10, sizeLetters - 5, RED);
 		if (isButtonPressed(ItchButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://valentin-villar.itch.io/");
 		}
 
@@ -194,6 +206,7 @@ namespace asteroids
 		DrawText("Ansimuz", (screenWidth / 2 + hundred - 10), (twoHundredFifty + 10), sizeLetters, RED);
 		if (isButtonPressed(backgroundButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://ansimuz.itch.io/space-background");
 		}
 
@@ -203,6 +216,7 @@ namespace asteroids
 		DrawText("Pixel By Pixel", (screenWidth / 2 + hundred - 30), (threeHundredFifty + 10), (sizeLetters - 5), RED);
 		if (isButtonPressed(spaceShipButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://pixel-by-pixel.itch.io/alcwilliam-space-ship-pack");
 		}
 
@@ -211,6 +225,7 @@ namespace asteroids
 		DrawText("Ho88it", (screenWidth / 2 + hundred), (fourHundredFifty + 10), sizeLetters, RED);
 		if (isButtonPressed(bulletsButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://ho88it.itch.io/2-d-projectile-sprites-wild-west-character-pack");
 		}
 
@@ -220,6 +235,7 @@ namespace asteroids
 		DrawText("Raylib", (screenWidth / 2 + hundred - 10), (fiveHundred + 60), sizeLetters, RED);
 		if (isButtonPressed(raylibButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://www.raylib.com/index.html");
 		}
 
@@ -244,6 +260,7 @@ namespace asteroids
 		DrawText("Tronik", (screenWidth / 2 + hundred), (hundred + 10), sizeLetters, RED);
 		if (isButtonPressed(MenuMusicButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://suno.com/song/e59ff0d9-1128-4a84-a976-4d21dfbc791c");
 		}
 
@@ -252,16 +269,18 @@ namespace asteroids
 		DrawText("Tronik", (screenWidth / 2 + hundred), (twoHundred - 10), sizeLetters, RED);
 		if (isButtonPressed(gameplayMusicButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://suno.com/song/bbfb93c9-37f9-4d51-8cfd-e15823f02192");
 		}
 
 
-		DrawText("Points SFX By: ", (screenWidth / 2 - twoHundredFifty), (twoHundredFifty + 10), sizeLetters, WHITE);
-		drawButton(pointsSfxButton);
-		DrawText("Zapslat", (screenWidth / 2 + hundred), (twoHundredFifty + 20), sizeLetters, RED);
-		if (isButtonPressed(pointsSfxButton))
+		DrawText("Click SFX By: ", (screenWidth / 2 - twoHundredFifty), (twoHundredFifty + 10), sizeLetters, WHITE);
+		drawButton(clickSfxButton);
+		DrawText("Pixaby", (screenWidth / 2 + hundred), (twoHundredFifty + 20), sizeLetters, RED);
+		if (isButtonPressed(clickSfxButton))
 		{
-			OpenURL("https://www.zapsplat.com/music/game-sound-friendly-happy-positive-chime-good-for-win-gain-points-or-bonus/");
+			PlaySound(clickSfx);
+			OpenURL("https://pixabay.com/sound-effects/click-234708/");
 		}
 
 		DrawText("Explosion SFX By: ", (screenWidth / 2 - twoHundredFifty), (threeHundredFifty - 10), sizeLetters, WHITE);
@@ -269,6 +288,7 @@ namespace asteroids
 		DrawText("Zapslat", (screenWidth / 2 + hundred), threeHundredFifty, sizeLetters, RED);
 		if (isButtonPressed(explosionSfxButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://www.zapsplat.com/music/8bit-medium-explosion-bomb-boom-or-blast-cannon-retro-old-school-classic-cartoon/");
 		}
 
@@ -277,6 +297,7 @@ namespace asteroids
 		DrawText("Zapslat", (screenWidth / 2 + hundred), (fourHundredFifty - 20), sizeLetters, RED);
 		if (isButtonPressed(loseSfxButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://www.zapsplat.com/music/cartoon-orchestral-musical-pizzicato-riff-short-fail-or-lose/");
 		}
 
@@ -285,6 +306,7 @@ namespace asteroids
 		DrawText("Elevenslab.io", (screenWidth / 2 + fifty), (fiveHundred + 10), sizeLetters, RED);
 		if (isButtonPressed(boostSfxButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://elevenlabs.io/app/sound-effects/history");
 		}
 
@@ -293,6 +315,7 @@ namespace asteroids
 		DrawText("Zapslat", (screenWidth / 2 + hundred), (fiveHundred + 90), sizeLetters, RED);
 		if (isButtonPressed(shootSfxButton))
 		{
+			PlaySound(clickSfx);
 			OpenURL("https://www.zapsplat.com/music/anime-hard-and-fast-laser-shoot-3/");
 		}
 
@@ -311,6 +334,7 @@ namespace asteroids
 
 		if (isButtonPressed(backToMenu))
 		{
+			PlaySound(clickSfx);
 			boolTrue = true;
 			boolFalse = false;
 		}
@@ -332,7 +356,10 @@ namespace asteroids
 		drawResumeGameTitle();
 
 		if (isButtonPressed(resumeGame))
+		{
+			PlaySound(clickSfx);
 			pauseOn = false;
+		}
 
 		drawBackToMenu(menuOn, pauseOn);
 	}
@@ -346,6 +373,7 @@ namespace asteroids
 
 		if (isButtonPressed(page1))
 		{
+			PlaySound(clickSfx);
 			creditsOn = true;
 			creditsOn2 = false;
 		}
@@ -355,6 +383,7 @@ namespace asteroids
 
 		if (isButtonPressed(page2))
 		{
+			PlaySound(clickSfx);
 			creditsOn = false;
 			creditsOn2 = true;
 		}
@@ -380,6 +409,7 @@ namespace asteroids
 
 		if (isButtonPressed(playAgain))
 		{
+			PlaySound(clickSfx);
 			gameOver = false;
 			resetGame();
 		}

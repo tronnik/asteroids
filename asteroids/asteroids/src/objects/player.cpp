@@ -36,6 +36,8 @@ namespace asteroids
 		p.respawnTime = 1.0f;
 
 		p.point = 0;
+
+		p.invensible = 10.0f;
 	}
 
 	void loadPlayer()
@@ -126,6 +128,8 @@ namespace asteroids
 
 	void checkPlayerCollisions(Player& p)
 	{
+		p.invensible -= GetFrameTime();
+
 		for (size_t i = 0; i < asteroids.size(); ++i)
 		{
 			if (asteroids[i].isActive && p.isActive)
@@ -133,13 +137,25 @@ namespace asteroids
 				if (checkCollsion(p, asteroids[i]))
 				{
 					p.isActive = false;
-					p.life--;          
-
+					p.life--;
+					
 					if (p.life > 0)
-						p.respawnTime = 1.0f; 
-
+						p.respawnTime = 1.0f;
+					
 					SetSoundVolume(loseSfx, 0.3f);
 					PlaySound(loseSfx);
+
+					//if (p.invensible <= 0.0f)
+					//{
+					//	p.isActive = false;
+					//	p.life--;
+					//
+					//	if (p.life > 0)
+					//		p.respawnTime = 1.0f;
+					//
+					//	SetSoundVolume(loseSfx, 0.3f);
+					//	PlaySound(loseSfx);
+					//}
 				}
 			}
 		}
@@ -150,10 +166,30 @@ namespace asteroids
 
 			if (p.respawnTime <= 0.0f)
 			{
-				p.isActive = true; 
+				//codigo original no borrar
+				p.isActive = true;
 				p.position = { static_cast<float>(screenWidth) / 2.0f, static_cast<float>(screenHeight) / 2.0f };
 				p.speed = { 0.0f, 0.0f };
 				p.respawnTime = 0.0f;
+				//codigo original no borrar
+
+				//
+				//
+				//
+				//for (size_t i = 0; i < asteroids.size(); ++i)
+				//{
+				//	if (p.invensible > 0.0f)
+				//	{
+				//		if (checkCollsion(p, asteroids[i]))
+				//		{
+				//
+				//			p.isActive = true;
+				//		}
+				//	}
+				//
+				//
+				//}
+
 			}
 		}
 	}

@@ -24,6 +24,7 @@ namespace asteroids
         int life;
         float respawnTime;
         int point;
+        float invensible;
     };
 
     extern Player player;
