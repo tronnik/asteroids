@@ -29,6 +29,8 @@ namespace asteroids
 
 	Sound clickSfx;
 
+	static void drawPageButton(bool& creditsOn, bool& creditsOn2);
+
 	static int hundred = 100;
 	static int fifty = 50;
 	static int oneHundredFifty = 150;

@@ -33,7 +33,6 @@ namespace asteroids
     void loadAsteroid();
     void updateAsteroid();
     void createNewAsteroids(AsteroidSize size, Vector2 position, Vector2 direction);
-    void spawnAsteroids();
     void drawAsteroid();
     void unloadAsteroid();
 }

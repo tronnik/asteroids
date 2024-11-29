@@ -18,6 +18,8 @@ namespace asteroids
     float spawnTimer = 0.0f; 
     const float spawnInterval = 1.5f; 
 
+    static void spawnAsteroids();
+
     void initAsteroid()
     {
         asteroids.resize(maxAsteroids);

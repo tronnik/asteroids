@@ -58,8 +58,6 @@ namespace asteroids
 
 						SetSoundVolume(explosionSfx, 0.3f);
 						PlaySound(explosionSfx);
-						SetSoundVolume(pointsSfx, 0.1f);
-						PlaySound(pointsSfx);
 
 						if (currentSize != AsteroidSize::SMALL)
 						{

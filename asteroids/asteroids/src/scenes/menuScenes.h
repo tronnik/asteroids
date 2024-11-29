@@ -18,8 +18,6 @@ namespace asteroids
 
 	void drawPause(bool& menuOn, bool& pauseOn);
 
-	void drawPageButton(bool& creditsOn, bool& creditsOn2);
-
 	void drawGameOver(bool& menuOn, bool& gameOver, int playerScore);
 
 	void unloadMenu();
