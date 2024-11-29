@@ -1,7 +1,5 @@
 #pragma once
 
-#include "objects/player.h"
-
 namespace asteroids
 {
 	void initMenu();

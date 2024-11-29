@@ -2,8 +2,6 @@
 
 #include "raylib.h"
 
-#include "scenes/menuScenes.h"
-
 namespace asteroids
 {
     struct Asteroid;

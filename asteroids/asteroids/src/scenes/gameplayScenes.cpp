@@ -33,6 +33,8 @@ namespace asteroids
 		gameplayMusic = LoadMusicStream("res/gameplayMusic.mp3");
 	}
 
+	
+
 	void updateGameplay(bool& gameOver)
 	{
 		SetMusicVolume(gameplayMusic, 0.5f);

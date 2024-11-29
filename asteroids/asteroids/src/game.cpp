@@ -5,6 +5,7 @@
 #include "objects/utils.h"
 #include "scenes/gameplayScenes.h"
 #include "scenes/menuScenes.h"
+#include "objects/player.h"
 
 namespace asteroids
 {
