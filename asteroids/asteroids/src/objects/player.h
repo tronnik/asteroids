@@ -2,7 +2,7 @@
 
 #include "raylib.h"
 
-#include "menuScenes.h"
+#include "scenes/menuScenes.h"
 
 namespace asteroids
 {
@@ -24,7 +24,6 @@ namespace asteroids
         int life;
         float respawnTime;
         int point;
-        int lastPoints;
     };
 
     extern Player player;

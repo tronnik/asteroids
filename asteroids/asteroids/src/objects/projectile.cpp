@@ -1,6 +1,6 @@
-#include "projectile.h"
+#include "objects/projectile.h"
 
-#include "utils.h"
+#include "objects/utils.h"
 
 namespace asteroids
 {

@@ -1,10 +1,10 @@
-#include "player.h"
+#include "objects/player.h"
 
 #include <cmath>  
 
-#include "utils.h"
-#include "projectile.h"
-#include "asteroid.h"
+#include "objects/utils.h"
+#include "objects/projectile.h"
+#include "objects/asteroid.h"
 
 namespace asteroids
 {
@@ -160,6 +160,10 @@ namespace asteroids
 
 	void drawPlayer(Player& p)
 	{
+		int lifePosX = 500;
+		int pointsPosX = 300;
+		int lifePointsPosY = 10;
+
 		if (p.isActive && p.life > 0)
 		{
 			Rectangle source = { 0.0f, 0.0f, static_cast<float>(spaceShip.width), static_cast<float>(spaceShip.height) };
@@ -173,9 +177,9 @@ namespace asteroids
 			DrawTexturePro(spaceShip, source, dest, origin, rotation, WHITE);
 		}
 
-		DrawText(TextFormat(" Lifes: %01i", p.life), (screenWidth / 2) - 500, screenHeightMin + 10, 30, RED);
+		DrawText(TextFormat(" Lifes: %01i", p.life), (screenWidth / 2) - lifePosX, screenHeightMin + lifePointsPosY, sizeLetters, RED);
 
-		DrawText(TextFormat(" Points: %01i", p.point), (screenWidth / 2) + 300, screenHeightMin + 10, 30, RED);
+		DrawText(TextFormat(" Points: %01i", p.point), (screenWidth / 2) + pointsPosX, screenHeightMin + lifePointsPosY, sizeLetters, RED);
 
 		drawProjectiles();
 	}

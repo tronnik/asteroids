@@ -1,15 +1,18 @@
-#include "gameplayScenes.h"
+#include "scenes/gameplayScenes.h"
 
-#include "player.h"
-#include "asteroid.h"
-#include "button.h"
-#include "utils.h"
-#include "projectile.h"
+#include "objects/player.h"
+#include "objects/asteroid.h"
+#include "objects/button.h"
+#include "objects/utils.h"
+#include "objects/projectile.h"
 
 namespace asteroids
 {
 	static Texture2D background;
 	extern Music gameplayMusic;
+
+	static int hundred = 100;
+	static int twoHundredFifty = 250;
 
 	void initGameplay()
 	{
@@ -25,7 +28,7 @@ namespace asteroids
 
 		initProjectiles();
 
-		initButton(pauseGame, screenWidth - 250, screenHeight - 100);
+		initButton(pauseGame, screenWidth - twoHundredFifty, screenHeight - hundred);
 	}
 
 	void loadGameplay()

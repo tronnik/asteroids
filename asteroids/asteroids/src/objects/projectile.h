@@ -2,7 +2,7 @@
 
 #include "raylib.h"
 
-#include "player.h"
+#include "objects/player.h"
 
 namespace asteroids
 {
@@ -15,7 +15,7 @@ namespace asteroids
         float radius;
     };
 
-#define maxProjectiles 10000 
+    const int maxProjectiles = 10000;
 
     extern Projectile projectiles[maxProjectiles];
     extern int projectileCount;
@@ -27,7 +27,3 @@ namespace asteroids
     void drawProjectiles();
     void unloadProjectiles();
 }
-
-
-
-

@@ -4,7 +4,7 @@
 
 #include "raylib.h"
 
-#include "projectile.h"
+#include "objects/projectile.h"
 
 namespace asteroids
 {

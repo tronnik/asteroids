@@ -6,4 +6,5 @@ namespace asteroids
 	extern int screenHeight;
 	extern int screenWidthMin;
 	extern int screenHeightMin;
+	extern int sizeLetters;
 }

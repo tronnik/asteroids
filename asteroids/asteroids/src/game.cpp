@@ -2,9 +2,9 @@
 
 #include "raylib.h"
 
-#include "utils.h"
-#include "gameplayScenes.h"
-#include "menuScenes.h"
+#include "objects/utils.h"
+#include "scenes/gameplayScenes.h"
+#include "scenes/menuScenes.h"
 
 namespace asteroids
 {
@@ -19,6 +19,7 @@ namespace asteroids
 	int screenHeight = 768;
 	int screenWidthMin = 0;
 	int screenHeightMin = 0;
+	int sizeLetters = 30;
 
 	bool menuOn = true;
 	bool controlsOn = false;
@@ -95,7 +96,7 @@ namespace asteroids
 		}
 		else if (gameOver)
 		{
-			drawGameOver(menuOn, gameOver);
+			drawGameOver(menuOn, gameOver, player.point);
 		}
 		else if (pauseOn)
 		{

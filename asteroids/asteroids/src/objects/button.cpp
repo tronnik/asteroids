@@ -1,8 +1,8 @@
-#include "button.h"
+#include "objects/button.h"
 
 #include "raylib.h"
 
-#include "utils.h"
+#include "objects/utils.h"
 
 namespace asteroids
 {
@@ -17,6 +17,19 @@ namespace asteroids
     Button page1;
     Button page2;
     
+    static int thirty = 30;
+    static int forty = 40;
+    static int seventy = 70;
+    static int eighty = 80;
+    static int hundred = 100;
+    static int twoHundred = 200;
+
+    static int threeHundredSixty = 360;
+    static int fourHundredSixty = 460;
+    static int fiveHundredSixty = 560;
+    static int sixHundredSixty = 660;
+    static int sevenHundredTen = 710;
+
 
     void initButton(Button& b, int xPos, int yPos)
     {
@@ -52,51 +65,51 @@ namespace asteroids
 
     void drawPlayTitle()
     {
-        DrawText(TextFormat("PLAY"), screenWidth / 2 - 40, 360, 30, RED);
+        DrawText(TextFormat("PLAY"), screenWidth / 2 - forty, threeHundredSixty, sizeLetters, RED);
     }
 
     void drawControlTitle()
     {
-        DrawText(TextFormat("CREDITS"), screenWidth / 2 - 70, 460, 30, RED);
+        DrawText(TextFormat("CREDITS"), screenWidth / 2 - seventy, fourHundredSixty, sizeLetters, RED);
     }
 
     void drawCreditsTitle()
     {
-        DrawText(TextFormat("CONTROLS"), screenWidth / 2 - 80, 560, 30, RED);
+        DrawText(TextFormat("CONTROLS"), screenWidth / 2 - eighty, fiveHundredSixty, sizeLetters, RED);
     }
 
     void drawExitTitle()
     {
-        DrawText(TextFormat("EXIT"), screenWidth / 2 - 40, 660, 30, RED);
+        DrawText(TextFormat("EXIT"), screenWidth / 2 - forty, sixHundredSixty, sizeLetters, RED);
     }
 
     void drawBackToMenuTitle()
     {
-        DrawText(TextFormat("MENU"), screenWidth / 2 + 110, 710, 30, RED);
+        DrawText(TextFormat("MENU"), screenWidth / 2 + hundred + 10, sevenHundredTen, sizeLetters, RED);
     }
 
     void drawPauseButtonTitle()
     {
-        DrawText(TextFormat("PAUSE"), screenWidth - 200, screenHeight - 90, 30, RED);
+        DrawText(TextFormat("PAUSE"), screenWidth - twoHundred, screenHeight - hundred + 10, sizeLetters, RED);
     }
 
     void drawResumeGameTitle()
     {
-        DrawText(TextFormat("RESUME"), screenWidth / 2 - 160, 710, 30, RED);
+        DrawText(TextFormat("RESUME"), screenWidth / 2 - hundred - 60, sevenHundredTen, sizeLetters, RED);
     }
 
     void drawPlayAgainTitle()
     {
-        DrawText(TextFormat("PLAY AGAIN"), screenWidth / 2 - 190, 710, 30, RED);
+        DrawText(TextFormat("PLAY AGAIN"), screenWidth / 2 - twoHundred + 10, sevenHundredTen, sizeLetters, RED);
     }
 
     void drawPage1Title()
     {
-        DrawText(TextFormat("1"), screenWidth / 2 - 130, 710, 30, RED);
+        DrawText(TextFormat("1"), screenWidth / 2 - hundred - thirty, sevenHundredTen, sizeLetters, RED);
     }
 
     void drawPage2Title()
     {
-        DrawText(TextFormat("2"), screenWidth / 2 - 30, 710, 30, RED);
+        DrawText(TextFormat("2"), screenWidth / 2 - thirty, sevenHundredTen, sizeLetters, RED);
     }
 }

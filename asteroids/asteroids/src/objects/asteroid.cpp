@@ -1,9 +1,9 @@
-#include "asteroid.h"
+#include "objects/asteroid.h"
 
 #include <iostream>
 #include <cmath>
 
-#include "utils.h"
+#include "objects/utils.h"
 
 namespace asteroids
 {
@@ -16,7 +16,7 @@ namespace asteroids
     Sound pointsSfx;
 
     float spawnTimer = 0.0f; 
-    const float spawnInterval = 3.0f; 
+    const float spawnInterval = 1.5f; 
 
     void initAsteroid()
     {
